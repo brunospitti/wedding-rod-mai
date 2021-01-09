@@ -1,1 +1,1 @@
-My portfolio with a simpler and cleaner layout, in comparison to my previous one, and it has deeper focus on demonstrating my skills as a Software Engineer / Front-end developer built with React, Gatsby, Netlify CMS and GraphQL.
+Rod and Mai's Wedding website
