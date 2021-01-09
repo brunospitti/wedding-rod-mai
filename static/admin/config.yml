@@ -1,0 +1,120 @@
+backend:
+  name: git-gateway
+  repo: brunospitti/wedding-test
+  branch: master
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "weddingInfo"
+    label: "Wedding Info"
+    folder: "src/info/weddingInfo"
+    create: true
+    slug: "{{language}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "weddingInfo",
+        }
+      - { label: "Language", name: "language", widget: "string" }
+      - { label: "Wedding date", name: "weddingDate", widget: "string" }
+      - { label: "Introduction", name: "intro", widget: "text" }
+      - {
+          label: "Invitation - Hello",
+          name: "invitation-hello",
+          widget: "string",
+        }
+      - {
+          label: "Invitation - Invite",
+          name: "invitation-invite",
+          widget: "string",
+        }
+      - {
+          label: "Invitation - Dress code",
+          name: "invitation-dress-code",
+          widget: "string",
+        }
+      - {
+          label: "Invitation - Starts",
+          name: "invitation-starts",
+          widget: "string",
+        }
+      - {
+          label: "Invitation - Ends",
+          name: "invitation-ends",
+          widget: "string",
+        }
+      - {
+          label: "Invitation - Weather - Title",
+          name: "invitation-weather-title",
+          widget: "string",
+        }
+      - {
+          label: "Invitation - Weather - Min",
+          name: "invitation-weather-min",
+          widget: "string",
+        }
+      - {
+          label: "Invitation - Weather - Max",
+          name: "invitation-weather-max",
+          widget: "string",
+        }
+      - {
+          label: "Invitation - Weather - Prec",
+          name: "invitation-weather-prec",
+          widget: "string",
+        }
+      - {
+          label: "Invitation - Show Pictures",
+          name: "invitation-show-pictures",
+          widget: "text",
+        }
+      - {
+          label: "Invitation - Countdown - Still",
+          name: "invitation-countdown-still",
+          widget: "string",
+        }
+      - {
+          label: "Invitation - Countdown - Days",
+          name: "invitation-countdown-days",
+          widget: "string",
+        }
+      - { label: "Title - Carousel", name: "title-carousel", widget: "string" }
+      - { label: "Title - Best men", name: "title-best-men", widget: "string" }
+      - {
+          label: "Best men - Bride's maid",
+          name: "best-men-brides-maid",
+          widget: "string",
+        }
+      - { label: "Title - Gift", name: "title-gift", widget: "string" }
+      - { label: "Gift", name: "gift", widget: "text" }
+      - { label: "Gift - Button", name: "gift-button", widget: "string" }
+      - {
+          label: "Title - Get ready",
+          name: "title-get-ready",
+          widget: "string",
+        }
+      - { label: "Get ready", name: "get-ready", widget: "text" }
+      - { label: "Form - name", name: "form-name", widget: "string" }
+      - { label: "Form - seats", name: "form-seats", widget: "string" }
+      - { label: "Form - location", name: "form-location", widget: "string" }
+      - { label: "Form - button", name: "form-button", widget: "string" }
+      - {
+          label: "Form - success - title",
+          name: "form-success-title",
+          widget: "string",
+        }
+      - {
+          label: "Form - success - subtitle",
+          name: "form-success-subtitle",
+          widget: "string",
+        }
+      - {
+          label: "Form - success - button",
+          name: "form-success-button",
+          widget: "string",
+        }
+      - { label: "Final phrase", name: "finalPhrase", widget: "text" }
