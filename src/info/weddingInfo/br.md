@@ -3,9 +3,9 @@ templateKey: weddingInfo
 language: br
 weddingDate: 18 de Dezembro de 2021
 intro: >-
-  ai ainnnnnnnnnnn!!! Que felicidade incrível poder compartilhar mais esse
-  momento com as pessoas que amamos. Quem diria que esse gordinho lindo ai da
-  foto finalmente iria tomar coragem e me pedir em casamento, hein?
+  Que felicidade incrível poder compartilhar mais esse momento com as pessoas
+  que amamos. Quem diria que esse gordinho lindo ai da foto finalmente iria
+  tomar coragem e me pedir em casamento, hein?
 
 
   Essa jornada começou há 8 anos e desde então já foram muitaaaaas risadas, lágrimas, aprendizados e histórias para contar, as quais cada um de vocês fez parte... E óbvio que dessa vez não seria diferente. Então aqui estamos nós, prontos para colocar mais um plano em ação, dessa vez para virar Senhor e Senhora Spitti. &#128540;
