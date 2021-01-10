@@ -7,114 +7,123 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: "weddingInfo"
-    label: "Wedding Info"
-    folder: "src/info/weddingInfo"
+  - name: "welcome"
+    label: "Welcome"
+    folder: "src/info/welcome"
     create: true
-    slug: "{{language}}"
     fields:
       - {
           label: "Template Key",
           name: "templateKey",
           widget: "hidden",
-          default: "weddingInfo",
+          default: "welcome",
         }
-      - { label: "Language", name: "language", widget: "string" }
-      - { label: "Wedding date", name: "weddingDate", widget: "string" }
-      - { label: "Introduction", name: "intro", widget: "text" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Sub Title", name: "sub-title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", required: false}
+  - name: "invite"
+    label: "Invite"
+    folder: "src/info/invite"
+    create: true
+    fields:
       - {
-          label: "Invitation - Hello",
-          name: "invitation-hello",
-          widget: "string",
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "invite",
         }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Sub Title", name: "sub-title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", required: false}
+  - name: "our-history"
+    label: "Our History"
+    folder: "src/info/our-history"
+    create: true
+    fields:
       - {
-          label: "Invitation - Invite",
-          name: "invitation-invite",
-          widget: "string",
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "our-history",
         }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Sub Title", name: "sub-title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", required: false}
+  - name: "presents"
+    label: "Presents"
+    folder: "src/info/presents"
+    create: true
+    fields:
       - {
-          label: "Invitation - Dress code",
-          name: "invitation-dress-code",
-          widget: "string",
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "presents",
         }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Sub Title", name: "sub-title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", required: false}
+      - { label: "Button text", name: "button-text", widget: "string" }
+      - { label: "Button link", name: "button-link", widget: "string" }
+  - name: "by-our-side"
+    label: "By Our Side"
+    folder: "src/info/by-our-side"
+    create: true
+    fields:
       - {
-          label: "Invitation - Starts",
-          name: "invitation-starts",
-          widget: "string",
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "by-our-side",
         }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Sub Title", name: "sub-title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", required: false}
+      - { label: "Parents Title", name: "parents-title", widget: "string" }
+      - { label: "Friends Title", name: "friends-title", widget: "string" }
+  - name: "parents"
+    label: "Parents"
+    folder: "src/info/parents"
+    create: true
+    fields:
       - {
-          label: "Invitation - Ends",
-          name: "invitation-ends",
-          widget: "string",
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "parents",
         }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Name", name: "title", widget: "string" }
+  - name: "friends"
+    label: "Friends"
+    folder: "src/info/friends"
+    create: true
+    fields:
       - {
-          label: "Invitation - Weather - Title",
-          name: "invitation-weather-title",
-          widget: "string",
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "friends",
         }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Name", name: "title", widget: "string" }
+  - name: "form"
+    label: "Form"
+    folder: "src/info/form"
+    create: true
+    fields:
       - {
-          label: "Invitation - Weather - Min",
-          name: "invitation-weather-min",
-          widget: "string",
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "form",
         }
-      - {
-          label: "Invitation - Weather - Max",
-          name: "invitation-weather-max",
-          widget: "string",
-        }
-      - {
-          label: "Invitation - Weather - Prec",
-          name: "invitation-weather-prec",
-          widget: "string",
-        }
-      - {
-          label: "Invitation - Show Pictures",
-          name: "invitation-show-pictures",
-          widget: "text",
-        }
-      - {
-          label: "Invitation - Countdown - Still",
-          name: "invitation-countdown-still",
-          widget: "string",
-        }
-      - {
-          label: "Invitation - Countdown - Days",
-          name: "invitation-countdown-days",
-          widget: "string",
-        }
-      - { label: "Title - Carousel", name: "title-carousel", widget: "string" }
-      - { label: "Title - Best men", name: "title-best-men", widget: "string" }
-      - {
-          label: "Best men - Bride's maid",
-          name: "best-men-brides-maid",
-          widget: "string",
-        }
-      - { label: "Title - Gift", name: "title-gift", widget: "string" }
-      - { label: "Gift", name: "gift", widget: "text" }
-      - { label: "Gift - Button", name: "gift-button", widget: "string" }
-      - {
-          label: "Title - Get ready",
-          name: "title-get-ready",
-          widget: "string",
-        }
-      - { label: "Get ready", name: "get-ready", widget: "text" }
-      - { label: "Form - name", name: "form-name", widget: "string" }
-      - { label: "Form - seats", name: "form-seats", widget: "string" }
-      - { label: "Form - location", name: "form-location", widget: "string" }
-      - { label: "Form - button", name: "form-button", widget: "string" }
-      - {
-          label: "Form - success - title",
-          name: "form-success-title",
-          widget: "string",
-        }
-      - {
-          label: "Form - success - subtitle",
-          name: "form-success-subtitle",
-          widget: "string",
-        }
-      - {
-          label: "Form - success - button",
-          name: "form-success-button",
-          widget: "string",
-        }
-      - { label: "Final phrase", name: "finalPhrase", widget: "text" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Sub Title", name: "sub-title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", required: false}
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "E-mail", name: "e-mail", widget: "string" }
+      - { label: "Phone", name: "phone", widget: "string" }
+      - { label: "Not Going", name: "not-going", widget: "string" }
+      - { label: "Maybe", name: "maybe", widget: "string" }
+      - { label: "Going", name: "going", widget: "string" }
