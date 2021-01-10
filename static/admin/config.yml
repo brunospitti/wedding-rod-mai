@@ -7,6 +7,20 @@ media_folder: static/img
 public_folder: /img
 
 collections:
+  - name: "banner"
+    label: "Banner"
+    folder: "src/info/banner"
+    create: true
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "banner",
+        }
+      - { label: "Names", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "DD.MM.YYYY", time_format: false }
+      - { label: "Days Left", name: "days-left", widget: "string"}
   - name: "welcome"
     label: "Welcome"
     folder: "src/info/welcome"

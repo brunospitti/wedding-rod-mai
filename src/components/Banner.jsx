@@ -3,56 +3,54 @@ import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import BackgroundImage from 'gatsby-background-image';
 import Loadable from 'react-loadable';
+import differenceInCalendarDays from 'date-fns/differenceInCalendarDays';
+import format from 'date-fns/format';
 
 import { breakpoints } from '../assets/globalStyles';
 
 import { fontFamilyTitle } from '../assets/globalStyles';
 
-const LoadableHeader = Loadable({
-  loader: () => import('./Header'),
-  loading: () => <div></div>,
-  render(loaded, props) {
-    let Component = loaded.Header;
-    return <Component name={props.name} language={props.language} />;
-  },
-});
+export const Banner = ({ banner }) => {
+  const daysLeft = differenceInCalendarDays(new Date(banner.date), new Date());
+  const daysLeftDisplay = banner.days_left.replace('{days_left}', daysLeft);
 
-export const Banner = ({ date, name, language }) => (
-  <StaticQuery
-    query={graphql`
-      query {
-        allFile: file(relativePath: { eq: "banner.jpg" }) {
-          childImageSharp {
-            fixed(height: 650, quality: 100) {
-              originalName
-              ...GatsbyImageSharpFixed
+  return (
+    <StaticQuery
+      query={graphql`
+        query {
+          allFile: file(relativePath: { eq: "banner.jpg" }) {
+            childImageSharp {
+              fixed(height: 650, quality: 100) {
+                originalName
+                ...GatsbyImageSharpFixed
+              }
             }
           }
         }
-      }
-    `}
-    render={({
-      allFile: {
-        childImageSharp: { fixed },
-      },
-    }) => (
-      <StyledBannerWrapper>
-        <StyledBanner
-          Tag="div"
-          fixed={fixed}
-          backgroundColor={`#a7ceca`}
-          data-loading="eager"
-        >
-          <LoadableHeader name={name} language={language} />
-          <StyledTitle>
-            <span id="title">Vitória & Bruno</span>
-            <span id="date">{date}</span>
-          </StyledTitle>
-        </StyledBanner>
-      </StyledBannerWrapper>
-    )}
-  />
-);
+      `}
+      render={({
+        allFile: {
+          childImageSharp: { fixed },
+        },
+      }) => (
+        <StyledBannerWrapper>
+          <StyledBanner
+            Tag="div"
+            fixed={fixed}
+            backgroundColor={`#a7ceca`}
+            data-loading="eager"
+          >
+            <StyledTitle>
+              <span id="title">{banner.title}</span>
+              <span id="date">{format(new Date(banner.date), 'dd.MM.yyyy')}</span>
+              <span id="days-left">{daysLeftDisplay}</span>
+            </StyledTitle>
+          </StyledBanner>
+        </StyledBannerWrapper>
+      )}
+    />
+  );
+};
 
 // styled components
 

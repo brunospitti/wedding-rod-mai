@@ -16,19 +16,42 @@ import { Godfathers } from '../components/Godfathers';
 import { Invite } from '../components/Invite';
 import { Form } from '../components/Form';
 
+import { dataNormalize } from '../helpers/dataNormalize';
+
 const IndexPage = (props) => {
-  const [name] = useQueryParam('name', StringParam);
+  const {
+    banner,
+    welcome,
+    invite,
+    our_history: ourHistory,
+    presents,
+    by_our_side: byOurSide,
+    parents,
+    friends,
+    form,
+  } = dataNormalize(props.data);
+
+  console.log('🚀 ~ banner', banner);
+  console.log('🚀 ~ form', form);
+  console.log('🚀 ~ friends', friends);
+  console.log('🚀 ~ parents', parents);
+  console.log('🚀 ~ byOurSide', byOurSide);
+  console.log('🚀 ~ presents', presents);
+  console.log('🚀 ~ ourHistory', ourHistory);
+  console.log('🚀 ~ invite', invite);
+  console.log('🚀 ~ welcome', welcome);
 
   return (
     <StyledIndex>
-      <Layout>a</Layout>
+      <Layout>
+        <Banner banner={banner} />
+      </Layout>
     </StyledIndex>
   );
 };
 
 export const mainInfo = graphql`
   fragment mainInfo on MarkdownRemark {
-    id
     frontmatter {
       title
       sub_title
@@ -39,16 +62,29 @@ export const mainInfo = graphql`
 
 export const parentsInfo = graphql`
   fragment parentsInfo on MarkdownRemark {
-    id
     frontmatter {
       title
-      image
+      image {
+        relativePath
+      }
     }
   }
 `;
 
 export const pageQuery = graphql`
   query MainQuery {
+    banner: allMarkdownRemark(filter: { fields: { slug: { regex: "/banner/" } } }) {
+      edges {
+        node {
+          frontmatter {
+            title
+            date
+            days_left
+          }
+        }
+      }
+    }
+
     welcome: allMarkdownRemark(filter: { fields: { slug: { regex: "/welcome/" } } }) {
       edges {
         node {
@@ -78,7 +114,6 @@ export const pageQuery = graphql`
     presents: allMarkdownRemark(filter: { fields: { slug: { regex: "/presents/" } } }) {
       edges {
         node {
-          id
           frontmatter {
             title
             sub_title
@@ -95,7 +130,6 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          id
           frontmatter {
             title
             sub_title
@@ -119,6 +153,24 @@ export const pageQuery = graphql`
       edges {
         node {
           ...parentsInfo
+        }
+      }
+    }
+
+    form: allMarkdownRemark(filter: { fields: { slug: { regex: "/form/" } } }) {
+      edges {
+        node {
+          frontmatter {
+            title
+            sub_title
+            description
+            name
+            e_mail
+            phone
+            not_going
+            maybe
+            going
+          }
         }
       }
     }
