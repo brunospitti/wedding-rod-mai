@@ -8,7 +8,7 @@ import format from 'date-fns/format';
 
 import { breakpoints } from '../assets/globalStyles';
 
-import { fontFamilyTitle } from '../assets/globalStyles';
+import { fontFamilyNames } from '../assets/globalStyles';
 
 export const Banner = ({ banner }) => {
   const daysLeft = differenceInCalendarDays(new Date(banner.date), new Date());
@@ -81,7 +81,7 @@ const StyledTitle = styled.div`
     line-height: 1;
     color: white;
     &#title {
-      font-family: ${fontFamilyTitle};
+      font-family: ${fontFamilyNames};
       width: 70%;
       font-size: 7em;
       margin-bottom: 0.15em;

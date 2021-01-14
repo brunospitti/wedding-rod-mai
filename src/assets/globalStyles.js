@@ -1,17 +1,19 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const colors = {
-  primary: '#2b5854',
-  secondary: '#a0225b',
-  tertiary: '#6fe2a5',
-  greyDark: '#535353',
+  primary: '#b27579',
+  primaryContrast: '#ffffff',
+  secondary: '#e4b0b2',
+  tertiary: '#bda092',
+  text: '#575d69',
   bgColor: '#f7f7f7',
 };
 
 export const fontFamily =
-  "'Bellota Text', -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', 'segoe ui', helvetica, roboto, noto, arial, sans-serif";
+  "'Open Sans', -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', 'segoe ui', helvetica, roboto, noto, arial, sans-serif";
 
-export const fontFamilyTitle = `'Tangerine', ${fontFamily}`;
+export const fontFamilyTitle = `'Amatic SC', ${fontFamily}`;
+export const fontFamilyNames = `'Hello Beautiful', ${fontFamilyTitle}`;
 
 export const breakpoints = {
   desktopLarge: `(min-width: 1701px)`,
@@ -25,8 +27,18 @@ export const breakpoints = {
 };
 
 export const GlobalStyles = createGlobalStyle`
-	// css reset
+	// Hello Beautiful font-face
+	@font-face {
+		font-family: "Hello Beautiful";
+		src:  url("/fonts/hello-beautiful.eot");
+		src:  url("/fonts/hello-beautiful.eot?#iefix") format("embedded-opentype"),
+					url("/fonts/hello-beautiful.woff2") format("woff2"),
+					url("/fonts/hello-beautiful.woff") format("woff"),
+					url("/fonts/hello-beautiful.ttf") format("truetype"),
+					url("/fonts/hello-beautiful.svg#Hello Beautiful") format("svg");
+	}
 
+	// css reset
 	html, body, div, span, applet, object, iframe,
 	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 	a, abbr, acronym, address, big, cite, code,
@@ -75,9 +87,7 @@ export const GlobalStyles = createGlobalStyle`
 		}
 	}
 
-
 	/* global styles */
-	@import url('https://fonts.googleapis.com/css?family=Bellota+Text:300,400,700|Tangerine:400,700&display=swap');
 	html,
 	body {
 		overflow-x: hidden;

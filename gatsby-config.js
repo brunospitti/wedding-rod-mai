@@ -29,6 +29,15 @@ module.exports = {
         name: 'info',
       },
     },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        custom: {
+          families: ['Hello Beautiful'],
+          urls: ['/fonts/fonts.css'],
+        },
+      },
+    },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {

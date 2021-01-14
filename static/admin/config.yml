@@ -7,6 +7,25 @@ media_folder: static/img
 public_folder: /img
 
 collections:
+  - name: "theme"
+    label: "Theme"
+    folder: "src/info/theme"
+    create: true
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "theme",
+        }
+      - { label: "Title", name: "title", widget: "string", default: "default" }
+      - { label: "primary", name: "primary", widget: "color", allowInput: true, default: "#b27579" }
+      - { label: "primaryContrast", name: "primaryContrast", widget: "color", allowInput: true, default: "#ffffff" }
+      - { label: "secondary", name: "secondary", widget: "color", allowInput: true, default: "#e4b0b2" }
+      - { label: "tertiary", name: "tertiary", widget: "color", allowInput: true, default: "#bda092" }
+      - { label: "text", name: "text", widget: "color", allowInput: true, default: "#575d69" }
+      - { label: "bg", name: "bg", widget: "color", allowInput: true, default: "#f7f7f7" }
+
   - name: "banner"
     label: "Banner"
     folder: "src/info/banner"

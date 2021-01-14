@@ -13,40 +13,16 @@ import { Section, SectionRaw } from '../components/helpers/Section';
 import { Banner } from '../components/Banner';
 import { Title } from '../components/Title';
 import { Godfathers } from '../components/Godfathers';
-import { Invite } from '../components/Invite';
-import { Form } from '../components/Form';
+import { HomePage } from '../components/HomePage';
+import { Theme } from '../components/hooks/Theme/Theme';
 
 import { dataNormalize } from '../helpers/dataNormalize';
 
 const IndexPage = (props) => {
-  const {
-    banner,
-    welcome,
-    invite,
-    our_history: ourHistory,
-    presents,
-    by_our_side: byOurSide,
-    parents,
-    friends,
-    form,
-  } = dataNormalize(props.data);
-
-  console.log('🚀 ~ banner', banner);
-  console.log('🚀 ~ form', form);
-  console.log('🚀 ~ friends', friends);
-  console.log('🚀 ~ parents', parents);
-  console.log('🚀 ~ byOurSide', byOurSide);
-  console.log('🚀 ~ presents', presents);
-  console.log('🚀 ~ ourHistory', ourHistory);
-  console.log('🚀 ~ invite', invite);
-  console.log('🚀 ~ welcome', welcome);
-
   return (
-    <StyledIndex>
-      <Layout>
-        <Banner banner={banner} />
-      </Layout>
-    </StyledIndex>
+    <Theme>
+      <HomePage data={props.data} />
+    </Theme>
   );
 };
 
@@ -177,28 +153,4 @@ export const pageQuery = graphql`
   }
 `;
 
-const StyledIndex = styled.div`
-  .LoadableTextFromString {
-    line-height: 22px;
-    text-align: justify;
-    span {
-      font-size: 0.7em;
-    }
-    @media ${breakpoints.mobile} {
-      font-size: 0.9em;
-    }
-    &.LoadableCentreTextFromString {
-      padding: 0 8em;
-      @media ${breakpoints.tablet} {
-        padding: 0 4em;
-      }
-      @media ${breakpoints.mobile} {
-        padding: 0 2em;
-      }
-      @media ${breakpoints.mobile} {
-        padding: 0;
-      }
-    }
-  }
-`;
 export default IndexPage;
