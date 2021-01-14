@@ -1,7 +1,7 @@
 ---
 templateKey: theme
 title: default
-primary: "#b17377"
+primary: "#7cb173"
 primaryContrast: "#ffffff"
 secondary: "#e4b0b2"
 tertiary: "#bda092"
