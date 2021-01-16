@@ -1,54 +1,44 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
-import BackgroundImage from 'gatsby-background-image';
-import Loadable from 'react-loadable';
 import differenceInCalendarDays from 'date-fns/differenceInCalendarDays';
 import format from 'date-fns/format';
 
-import { breakpoints } from '../assets/globalStyles';
-
-import { fontFamilyNames } from '../assets/globalStyles';
+import { breakpoints, fontFamilyNames } from '../assets/globalStyles';
+import { BgImage } from './BgImage';
 
 export const Banner = ({ banner }) => {
-  const daysLeft = differenceInCalendarDays(new Date(banner.date), new Date());
+  const bannerDate = new Date(banner.date);
+  const daysLeft = differenceInCalendarDays(bannerDate, new Date());
   const daysLeftDisplay = banner.days_left.replace('{days_left}', daysLeft);
 
-  return (
-    <StaticQuery
-      query={graphql`
-        query {
-          allFile: file(relativePath: { eq: "banner.jpg" }) {
-            childImageSharp {
-              fixed(height: 650, quality: 100) {
-                originalName
-                ...GatsbyImageSharpFixed
-              }
-            }
+  const {
+    allFile: {
+      childImageSharp: { fixed },
+    },
+  } = useStaticQuery(graphql`
+    query BannerImage {
+      allFile: file(relativePath: { eq: "banner.jpg" }) {
+        childImageSharp {
+          fixed(height: 650, quality: 100) {
+            originalName
+            ...GatsbyImageSharpFixed
           }
         }
-      `}
-      render={({
-        allFile: {
-          childImageSharp: { fixed },
-        },
-      }) => (
-        <StyledBannerWrapper>
-          <StyledBanner
-            Tag="div"
-            fixed={fixed}
-            backgroundColor={`#a7ceca`}
-            data-loading="eager"
-          >
-            <StyledTitle>
-              <span id="title">{banner.title}</span>
-              <span id="date">{format(new Date(banner.date), 'dd.MM.yyyy')}</span>
-              <span id="days-left">{daysLeftDisplay}</span>
-            </StyledTitle>
-          </StyledBanner>
-        </StyledBannerWrapper>
-      )}
-    />
+      }
+    }
+  `);
+
+  return (
+    <StyledBannerWrapper>
+      <BgImage fixedImage={fixed}>
+        <StyledTitle>
+          <span id="title">{banner.title}</span>
+          <span id="date">{format(bannerDate, 'dd.MM.yyyy')}</span>
+          <span id="days-left">{daysLeftDisplay}</span>
+        </StyledTitle>
+      </BgImage>
+    </StyledBannerWrapper>
   );
 };
 
@@ -57,13 +47,6 @@ export const Banner = ({ banner }) => {
 const StyledBannerWrapper = styled.div`
   width: 100%;
   height: 650px;
-`;
-const StyledBanner = styled(BackgroundImage)`
-  width: 100% !important;
-  height: 100% !important;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 `;
 
 const StyledTitle = styled.div`

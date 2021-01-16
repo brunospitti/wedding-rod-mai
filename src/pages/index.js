@@ -1,22 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import Loadable from 'react-loadable';
 import { graphql } from 'gatsby';
-import { useQueryParam, StringParam } from 'use-query-params';
-import BackgroundImage from 'gatsby-background-image';
 
 import { breakpoints, colors } from '../assets/globalStyles';
 
-import { Layout } from '../components/helpers/Layout';
-import { Section, SectionRaw } from '../components/helpers/Section';
-import { Banner } from '../components/Banner';
-import { Title } from '../components/Title';
-import { Godfathers } from '../components/Godfathers';
 import { HomePage } from '../components/HomePage';
 import { Theme } from '../components/hooks/Theme/Theme';
-
-import { dataNormalize } from '../helpers/dataNormalize';
 
 const IndexPage = (props) => {
   return (
@@ -40,9 +29,7 @@ export const parentsInfo = graphql`
   fragment parentsInfo on MarkdownRemark {
     frontmatter {
       title
-      image {
-        relativePath
-      }
+      image
     }
   }
 `;
@@ -95,7 +82,7 @@ export const pageQuery = graphql`
             sub_title
             description
             button_link
-            button_link
+            button_text
           }
         }
       }

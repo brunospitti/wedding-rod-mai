@@ -2,15 +2,51 @@ import React from 'react';
 import styled from 'styled-components';
 import { Carousel } from 'react-responsive-carousel';
 import BackgroundImage from 'gatsby-background-image';
+import { useStaticQuery, graphql } from 'gatsby';
 
 import { breakpoints, colors } from '../assets/globalStyles';
+import { useTheme } from './hooks/Theme/useTheme';
 
 import { NonStretchedImg } from './helpers/NonStretchedImg';
 
-export const PhotosCarousel = ({ images, bgImgFluid }) => {
+export const PhotosCarousel = () => {
+  const { theme } = useTheme();
+
+  const { photos, pattern } = useStaticQuery(graphql`
+    query PhotosCarousel {
+      photos: allImageSharp(
+        filter: { fluid: { originalName: { regex: "/^carousel/" } } }
+        sort: { fields: fluid___originalName }
+      ) {
+        edges {
+          node {
+            id
+            fluid(maxWidth: 1000) {
+              originalName
+              presentationWidth
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+
+      pattern: file(relativePath: { eq: "pattern.png" }) {
+        childImageSharp {
+          fluid(quality: 90) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `);
+
   return (
     <StyledCarousel>
-      <StyledFlowerBg fluid={bgImgFluid} />
+      <StyledPattern
+        theme={theme}
+        fluid={pattern.childImageSharp.fluid}
+        background="white"
+      />
 
       <Carousel
         swipeScrollTolerance={2}
@@ -24,7 +60,7 @@ export const PhotosCarousel = ({ images, bgImgFluid }) => {
         showStatus={false}
         showThumbs={false}
       >
-        {images.edges.map(({ node: { fluid } }) => (
+        {photos.edges.map(({ node: { fluid } }) => (
           <NonStretchedImg key={fluid.originalName} fluid={fluid} />
         ))}
       </Carousel>
@@ -147,34 +183,18 @@ const StyledCarousel = styled.div`
   }
 `;
 
-const StyledFlowerBg = styled(BackgroundImage)`
+const StyledPattern = styled(BackgroundImage)`
   background-size: contain;
   display: block;
+  background-color: white;
+  background-position: left;
   position: absolute !important;
   width: 100%;
-  height: 830px !important;
-  margin: -88px 2%;
-  @media ${breakpoints.desktopExtraSmall} {
-    height: 800px !important;
-    margin: -70px 2%;
-  }
-  @media ${breakpoints.tablet} {
-    height: 700px !important;
-    margin: -40px 2%;
-  }
-  @media ${breakpoints.tabletSmall} {
-    width: 100%;
-    height: 680px !important;
-    margin: -30px 2%;
-  }
-  @media ${breakpoints.mobile} {
-    height: 555px !important;
-    width: 115%;
-    margin: -53px -7%;
-  }
-  @media ${breakpoints.mobileSmall} {
-    height: 500px !important;
-    margin: -70px -13%;
-    width: 130%;
+  height: 660px !important;
+  background-repeat: repeat-x !important;
+  opacity: 0.3 !important;
+  &:before,
+  &:after {
+    box-shadow: 0 0 20px 30px ${(props) => props.theme.bgColor || '#f7f7f7'} inset;
   }
 `;

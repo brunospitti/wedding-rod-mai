@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { breakpoints, fontFamilyTitle } from '../assets/globalStyles';
+import { breakpoints } from '../assets/globalStyles';
 import { Title } from './Title';
 import { useTheme } from './hooks/Theme/useTheme';
 
@@ -12,7 +12,7 @@ export const TextSection = ({ title, subTitle, description }) => {
     <StyledTextSection theme={theme}>
       <Title>{title}</Title>
       <div className="text sub-title">{subTitle}</div>
-      <div className="text description">{description}</div>
+      {description && <div className="text description">{description}</div>}
     </StyledTextSection>
   );
 };
