@@ -91,7 +91,7 @@ export const GlobalStyles = createGlobalStyle`
 	html,
 	body {
 		overflow-x: hidden;
-		background-color: ${colors.bgColor};
+		background-color: ${(props) => props.theme.bg};
 	}
 
 	* {
@@ -99,6 +99,6 @@ export const GlobalStyles = createGlobalStyle`
 		touch-action: auto;
 		font-family: ${fontFamily};
 		font-size: 18px;
-		color: ${colors.greyDark};
+		color: ${(props) => props.theme.text};
 	}
 `;

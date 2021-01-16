@@ -40,6 +40,7 @@ collections:
       - { label: "Names", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "DD.MM.YYYY", time_format: false }
       - { label: "Days Left", name: "days-left", widget: "string"}
+  
   - name: "welcome"
     label: "Welcome"
     folder: "src/info/welcome"
@@ -54,6 +55,7 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Sub Title", name: "sub-title", widget: "string" }
       - { label: "Description", name: "description", widget: "text", required: false}
+  
   - name: "invite"
     label: "Invite"
     folder: "src/info/invite"
@@ -68,6 +70,7 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Sub Title", name: "sub-title", widget: "string" }
       - { label: "Description", name: "description", widget: "text", required: false}
+  
   - name: "our-history"
     label: "Our History"
     folder: "src/info/our-history"
@@ -82,6 +85,7 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Sub Title", name: "sub-title", widget: "string" }
       - { label: "Description", name: "description", widget: "text", required: false}
+  
   - name: "presents"
     label: "Presents"
     folder: "src/info/presents"
@@ -98,6 +102,7 @@ collections:
       - { label: "Description", name: "description", widget: "text", required: false}
       - { label: "Button text", name: "button-text", widget: "string" }
       - { label: "Button link", name: "button-link", widget: "string" }
+  
   - name: "by-our-side"
     label: "By Our Side"
     folder: "src/info/by-our-side"
@@ -114,6 +119,7 @@ collections:
       - { label: "Description", name: "description", widget: "text", required: false}
       - { label: "Parents Title", name: "parents-title", widget: "string" }
       - { label: "Friends Title", name: "friends-title", widget: "string" }
+  
   - name: "parents"
     label: "Parents"
     folder: "src/info/parents"
@@ -127,6 +133,7 @@ collections:
         }
       - { label: "Image", name: "image", widget: "image" }
       - { label: "Name", name: "title", widget: "string" }
+  
   - name: "friends"
     label: "Friends"
     folder: "src/info/friends"
@@ -140,6 +147,7 @@ collections:
         }
       - { label: "Image", name: "image", widget: "image" }
       - { label: "Name", name: "title", widget: "string" }
+  
   - name: "form"
     label: "Form"
     folder: "src/info/form"
@@ -160,3 +168,16 @@ collections:
       - { label: "Not Going", name: "not-going", widget: "string" }
       - { label: "Maybe", name: "maybe", widget: "string" }
       - { label: "Going", name: "going", widget: "string" }
+  
+  - name: "finalPhrase"
+    label: "Final Phrase"
+    folder: "src/info/finalPhrase"
+    create: true
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "finalPhrase",
+        }
+      - { label: "Title", name: "title", widget: "string" }

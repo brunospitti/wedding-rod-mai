@@ -3,14 +3,19 @@ import styled from 'styled-components';
 
 import { GlobalStyles } from '../../assets/globalStyles';
 import { Helmet } from './Helmet';
+import { useTheme } from '../hooks/Theme/useTheme';
 
-export const Layout = ({ children }) => (
-  <>
-    <Helmet />
-    <StyledLayout>{children}</StyledLayout>
-    <GlobalStyles />
-  </>
-);
+export const Layout = ({ children }) => {
+  const { theme } = useTheme();
+
+  return (
+    <>
+      <Helmet />
+      <StyledLayout>{children}</StyledLayout>
+      <GlobalStyles theme={theme} />
+    </>
+  );
+};
 
 const StyledLayout = styled.div`
   height: 100%;

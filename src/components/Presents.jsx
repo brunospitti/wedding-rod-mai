@@ -1,13 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useStaticQuery, graphql } from 'gatsby';
 
 import { breakpoints, colors, fontFamilyTitle } from '../assets/globalStyles';
 import { useTheme } from './hooks/Theme/useTheme';
 import { TextSection } from '../components/TextSection';
+import { BgImage } from './BgImage';
 
 export const Presents = ({ presents }) => {
-  console.log('🚀 ~ file: Presents.jsx ~ line 9 ~ Presents ~ presents', presents);
   const { theme } = useTheme();
+
+  const {
+    allFile: {
+      childImageSharp: { fixed },
+    },
+  } = useStaticQuery(graphql`
+    query GaelicFigure {
+      allFile: file(relativePath: { eq: "gaelic.png" }) {
+        childImageSharp {
+          fixed(height: 77, quality: 90) {
+            originalName
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `);
 
   return (
     <StyledPresentsWrapper theme={theme}>
@@ -16,9 +34,14 @@ export const Presents = ({ presents }) => {
         subTitle={presents.sub_title}
         description={presents.description}
       />
-      <a href={presents.button_link} target="_blank" rel="noreferrer">
-        <span>{presents.button_text}</span>
-      </a>
+      <div className="button-wrapper">
+        <a href={presents.button_link} target="_blank" rel="noreferrer">
+          <span>{presents.button_text}</span>
+        </a>
+      </div>
+      <div className="image-holder">
+        <BgImage fixedImage={fixed} backgroundColor="transparent" />
+      </div>
     </StyledPresentsWrapper>
   );
 };
@@ -26,24 +49,32 @@ export const Presents = ({ presents }) => {
 // styled components
 const StyledPresentsWrapper = styled.div`
   margin-bottom: 200px;
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+  }
   a {
     background: linear-gradient(
       ${(props) => props.theme.secondary},
       ${(props) => props.theme.primary}
     );
-    color: ${(props) => props.theme.primaryContrast};
-    display: flex;
-    width: 30%;
-    height: 60px;
-    margin: auto;
+    display: inline-flex;
+    padding: 23px 70px;
     text-decoration: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 0 0 ${(props) => props.theme.primary};
-    border-bottom: 4px solid ${(props) => props.theme.bgColor};
+    border-bottom: 4px solid ${(props) => props.theme.bg};
     span {
+      color: ${(props) => props.theme.primaryContrast};
       font-size: 1.25em;
     }
+  }
+  .image-holder {
+    height: 70px;
+    width: 70px;
+    display: block;
+    margin: 100px auto;
   }
 `;

@@ -11,6 +11,8 @@ import { dataNormalize } from '../helpers/dataNormalize';
 import { IrelandPhoto } from './IrelandPhoto';
 import { Invite } from './Invite';
 import { Presents } from './Presents';
+import { ByOurSide } from './ByOurSide';
+import { Form } from './Form';
 
 export const HomePage = ({ data }) => {
   const [fontLoaded, setFontLoaded] = useState(false);
@@ -25,6 +27,7 @@ export const HomePage = ({ data }) => {
       our_history: ourHistory = {},
       invite = {},
       welcome = {},
+      finalPhrase = {},
     },
     setNormalizedData,
   ] = useState({});
@@ -72,6 +75,13 @@ export const HomePage = ({ data }) => {
           />
           <LoadablePhotosCarousel />
           <Presents presents={presents} />
+          <ByOurSide byOurSide={byOurSide} friends={friends} parents={parents} />
+          <Form form={form} />
+          <TextSection
+            title={finalPhrase.title}
+            subTitle={finalPhrase.sub_title}
+            description={finalPhrase.description}
+          />
         </>
       ) : (
         <div>loading</div>

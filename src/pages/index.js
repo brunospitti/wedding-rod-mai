@@ -29,7 +29,14 @@ export const parentsInfo = graphql`
   fragment parentsInfo on MarkdownRemark {
     frontmatter {
       title
-      image
+      image {
+        childImageSharp {
+          fixed(height: 200, quality: 90) {
+            originalName
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
     }
   }
 `;
@@ -133,6 +140,18 @@ export const pageQuery = graphql`
             not_going
             maybe
             going
+          }
+        }
+      }
+    }
+
+    finalPhrase: allMarkdownRemark(
+      filter: { fields: { slug: { regex: "/finalPhrase/" } } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
           }
         }
       }

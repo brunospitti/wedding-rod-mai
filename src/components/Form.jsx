@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import BackgroundImage from 'gatsby-background-image';
 
 import { colors, breakpoints } from '../assets/globalStyles';
+import { TextSection } from '../components/TextSection';
 
 const encode = (data) => {
   return Object.keys(data)
@@ -10,26 +11,29 @@ const encode = (data) => {
     .join('&');
 };
 
-export class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      success: false,
-      name: this.props.name,
-      number: 0,
-      pickUpLocation: '',
-    };
-  }
+export const Form = (props) => {
+  const [success, setSuccess] = React.useState(false);
+  const [name, setName] = React.useState(props.name);
+  const [number, setNumber] = React.useState(0);
+  const [pickUpLocation, setPickUpLocation] = React.useState('');
+  const [botField, setBotField] = React.useState();
 
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    const { name: targetName, value: targetValue } = e.target;
+    if (targetName === 'bot-field') {
+      setBotField(targetValue);
+    } else if (targetName === 'name') {
+      setName(targetValue);
+    } else if (targetName === 'number') {
+      setNumber(targetValue);
+    }
   };
 
-  handleRadioChange = (e) => {
-    this.setState({ pickUpLocation: e.target.value });
+  const handleRadioChange = (e) => {
+    setPickUpLocation(e.target.value);
   };
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     fetch('/', {
@@ -37,139 +41,140 @@ export class Form extends React.Component {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
         'form-name': form.getAttribute('name'),
-        ...this.state,
+        success,
+        name,
+        number,
+        pickUpLocation,
       }),
     })
-      .then(() => this.handleSuccess())
-      .catch((err) => this.handleError(err));
+      .then(() => handleSuccess())
+      .catch((err) => handleError(err));
   };
 
-  handleSuccess = () => {
-    this.setState({ success: true });
+  const handleSuccess = () => {
+    setSuccess(true);
   };
 
-  handleError = (err) => {
+  const handleError = (err) => {
     console.log(`Error -> ${err}`);
   };
 
-  handleFormBack = () => {
-    this.setState({
-      name: '',
-      number: 0,
-      pickUpLocation: '',
-      success: false,
-    });
+  const handleFormBack = () => {
+    setSuccess(false);
+    setName('');
+    setNumber(0);
+    setPickUpLocation('');
   };
 
-  render() {
-    const {
-      name: labelName,
-      button: buttonLabel,
-      location,
-      seats,
-      success_button,
-      success_subtitle,
-      success_title,
-    } = this.props.formInfo;
+  const {
+    name: labelName,
+    button: buttonLabel,
+    location,
+    seats,
+    success_button,
+    success_subtitle,
+    success_title,
+  } = props.form;
 
-    return (
-      <StyledFormHolder>
-        {this.state.success ? (
-          <StyledSuccess>
-            <div>
-              <span>{success_title.replace('{name}', this.state.name)}</span>
-              {success_subtitle}
-              <StyledButton onClick={this.handleFormBack}>{success_button}</StyledButton>
-            </div>
-          </StyledSuccess>
-        ) : (
-          <form
-            name="shuttleVan"
-            method="post"
-            action="/thanks/"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
-            onSubmit={this.handleSubmit}
-          >
-            {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-            <input type="hidden" name="form-name" value="shuttleVan" />
-            <p hidden>
-              <label>
-                Don’t fill this out:{' '}
-                <input name="bot-field" onChange={this.handleChange} />
-              </label>
-            </p>
-            <StyledLabel>
-              {labelName}
-              <StyledInput
-                required
-                type="text"
-                name="name"
-                placeholder={labelName}
-                onChange={this.handleChange}
-                value={this.state.name}
+  return (
+    <StyledFormHolder>
+      <TextSection
+        title={props.form.title}
+        subTitle={props.form.sub_title}
+        description={props.form.description}
+      />
+      {success ? (
+        <StyledSuccess>
+          <div>
+            <span>{success_title.replace('{name}', name)}</span>
+            {success_subtitle}
+            <StyledButton onClick={handleFormBack}>{success_button}</StyledButton>
+          </div>
+        </StyledSuccess>
+      ) : (
+        <form
+          name="confirmation"
+          method="post"
+          action="/thanks/"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          onSubmit={handleSubmit}
+        >
+          {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
+          <input type="hidden" name="form-name" value="confirmation" />
+          <p hidden>
+            <label>
+              Don’t fill this out: <input name="bot-field" onChange={handleChange} />
+            </label>
+          </p>
+          <StyledLabel>
+            {labelName}
+            <StyledInput
+              required
+              type="text"
+              name="name"
+              placeholder={labelName}
+              onChange={handleChange}
+              value={name}
+            />
+          </StyledLabel>
+          <StyledLabel>
+            {seats}
+            <StyledInput
+              required
+              min="0"
+              type="number"
+              name="number"
+              placeholder={seats}
+              onChange={handleChange}
+              value={number}
+            />
+          </StyledLabel>
+          <StyledLabel>{location}</StyledLabel>
+          <StyledRadiosHolder>
+            <label htmlFor="vila-prudente">
+              <input
+                type="radio"
+                id="vila-prudente"
+                name="pickUpLocation"
+                value="vila-prudente"
+                onChange={handleRadioChange}
               />
-            </StyledLabel>
-            <StyledLabel>
-              {seats}
-              <StyledInput
-                required
-                min="0"
-                type="number"
-                name="number"
-                placeholder={seats}
-                onChange={this.handleChange}
-                value={this.state.number}
+              Metrô Vila Prudente
+            </label>
+            <label htmlFor="orlando-chiodi">
+              <input
+                type="radio"
+                id="orlando-chiodi"
+                name="pickUpLocation"
+                value="orlando-chiodi"
+                onChange={handleRadioChange}
               />
-            </StyledLabel>
-            <StyledLabel>{location}</StyledLabel>
-            <StyledRadiosHolder>
-              <label htmlFor="vila-prudente">
-                <input
-                  type="radio"
-                  id="vila-prudente"
-                  name="pickUpLocation"
-                  value="vila-prudente"
-                  onChange={this.handleRadioChange}
-                />
-                Metrô Vila Prudente
-              </label>
-              <label htmlFor="orlando-chiodi">
-                <input
-                  type="radio"
-                  id="orlando-chiodi"
-                  name="pickUpLocation"
-                  value="orlando-chiodi"
-                  onChange={this.handleRadioChange}
-                />
-                Rua Orlando Chiodi
-              </label>
-              <label htmlFor="santo-andre">
-                <input
-                  type="radio"
-                  id="santo-andre"
-                  name="pickUpLocation"
-                  value="santo-andre"
-                  onChange={this.handleRadioChange}
-                />
-                Santo André
-              </label>
-            </StyledRadiosHolder>
+              Rua Orlando Chiodi
+            </label>
+            <label htmlFor="santo-andre">
+              <input
+                type="radio"
+                id="santo-andre"
+                name="pickUpLocation"
+                value="santo-andre"
+                onChange={handleRadioChange}
+              />
+              Santo André
+            </label>
+          </StyledRadiosHolder>
 
-            {this.state.name != '' &&
-              this.state.number > 0 &&
-              this.state.pickUpLocation != '' && (
-                <StyledButton type="submit">
-                  <div>{buttonLabel}</div>
-                </StyledButton>
-              )}
-          </form>
-        )}
-        <StyledFlower04 fluid={this.props.flowerImage} />
-      </StyledFormHolder>
-    );
-  }
-}
+          {name != '' && number > 0 && pickUpLocation != '' && (
+            <StyledButton type="submit">
+              <div>{buttonLabel}</div>
+            </StyledButton>
+          )}
+        </form>
+      )}
+      <StyledFlower04 fluid={props.flowerImage} />
+    </StyledFormHolder>
+  );
+};
 
 const StyledFormHolder = styled.div`
   position: relative;

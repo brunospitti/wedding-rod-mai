@@ -195,6 +195,6 @@ const StyledPattern = styled(BackgroundImage)`
   opacity: 0.3 !important;
   &:before,
   &:after {
-    box-shadow: 0 0 20px 30px ${(props) => props.theme.bgColor || '#f7f7f7'} inset;
+    box-shadow: 0 0 20px 30px ${(props) => props.theme.bg} inset;
   }
 `;

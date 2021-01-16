@@ -11,7 +11,7 @@ export const TextSection = ({ title, subTitle, description }) => {
   return (
     <StyledTextSection theme={theme}>
       <Title>{title}</Title>
-      <div className="text sub-title">{subTitle}</div>
+      {subTitle && <div className="text sub-title">{subTitle}</div>}
       {description && <div className="text description">{description}</div>}
     </StyledTextSection>
   );
@@ -21,7 +21,6 @@ export const TextSection = ({ title, subTitle, description }) => {
 const StyledTextSection = styled.div`
   margin: 0.5em 0;
   text-align: center;
-  color: ${(props) => props.theme.text};
   .Title {
     margin-bottom: 1em;
   }
