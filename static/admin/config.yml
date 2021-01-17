@@ -39,7 +39,7 @@ collections:
         }
       - { label: "Names", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "DD.MM.YYYY", time_format: false }
-      - { label: "Days Left", name: "days-left", widget: "string"}
+      - { label: "Days Left", name: "daysLeft", widget: "string"}
   
   - name: "welcome"
     label: "Welcome"
@@ -53,7 +53,7 @@ collections:
           default: "welcome",
         }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Sub Title", name: "sub-title", widget: "string" }
+      - { label: "Sub Title", name: "subTitle", widget: "string" }
       - { label: "Description", name: "description", widget: "text", required: false}
   
   - name: "invite"
@@ -68,22 +68,22 @@ collections:
           default: "invite",
         }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Sub Title", name: "sub-title", widget: "string" }
+      - { label: "Sub Title", name: "subTitle", widget: "string" }
       - { label: "Description", name: "description", widget: "text", required: false}
   
-  - name: "our-history"
-    label: "Our History"
-    folder: "src/info/our-history"
+  - name: "ourStory"
+    label: "Our Story"
+    folder: "src/info/ourStory"
     create: true
     fields:
       - {
           label: "Template Key",
           name: "templateKey",
           widget: "hidden",
-          default: "our-history",
+          default: "ourStory",
         }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Sub Title", name: "sub-title", widget: "string" }
+      - { label: "Sub Title", name: "subTitle", widget: "string" }
       - { label: "Description", name: "description", widget: "text", required: false}
   
   - name: "presents"
@@ -98,27 +98,27 @@ collections:
           default: "presents",
         }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Sub Title", name: "sub-title", widget: "string" }
+      - { label: "Sub Title", name: "subTitle", widget: "string" }
       - { label: "Description", name: "description", widget: "text", required: false}
-      - { label: "Button text", name: "button-text", widget: "string" }
-      - { label: "Button link", name: "button-link", widget: "string" }
+      - { label: "Button text", name: "buttonText", widget: "string" }
+      - { label: "Button link", name: "buttonLink", widget: "string" }
   
-  - name: "by-our-side"
+  - name: "byOurSide"
     label: "By Our Side"
-    folder: "src/info/by-our-side"
+    folder: "src/info/byOurSide"
     create: true
     fields:
       - {
           label: "Template Key",
           name: "templateKey",
           widget: "hidden",
-          default: "by-our-side",
+          default: "byOurSide",
         }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Sub Title", name: "sub-title", widget: "string" }
+      - { label: "Sub Title", name: "subTitle", widget: "string" }
       - { label: "Description", name: "description", widget: "text", required: false}
-      - { label: "Parents Title", name: "parents-title", widget: "string" }
-      - { label: "Friends Title", name: "friends-title", widget: "string" }
+      - { label: "Parents Title", name: "parentsTitle", widget: "string" }
+      - { label: "Friends Title", name: "friendsTitle", widget: "string" }
   
   - name: "parents"
     label: "Parents"
@@ -160,14 +160,14 @@ collections:
           default: "form",
         }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Sub Title", name: "sub-title", widget: "string" }
+      - { label: "Sub Title", name: "subTitle", widget: "string" }
       - { label: "Description", name: "description", widget: "text", required: false}
       - { label: "Name", name: "name", widget: "string" }
-      - { label: "E-mail", name: "e-mail", widget: "string" }
+      - { label: "E-mail", name: "eMail", widget: "string" }
       - { label: "Phone", name: "phone", widget: "string" }
-      - { label: "Not Going", name: "not-going", widget: "string" }
-      - { label: "Maybe", name: "maybe", widget: "string" }
       - { label: "Going", name: "going", widget: "string" }
+      - { label: "Maybe", name: "maybe", widget: "string" }
+      - { label: "Not Going", name: "notGoing", widget: "string" }
   
   - name: "finalPhrase"
     label: "Final Phrase"

@@ -31,12 +31,12 @@ export const Presents = ({ presents }) => {
     <StyledPresentsWrapper theme={theme}>
       <TextSection
         title={presents.title}
-        subTitle={presents.sub_title}
+        subTitle={presents.subTitle}
         description={presents.description}
       />
       <div className="button-wrapper">
-        <a href={presents.button_link} target="_blank" rel="noreferrer">
-          <span>{presents.button_text}</span>
+        <a href={presents.buttonLink} target="_blank" rel="noreferrer">
+          <span>{presents.buttonText}</span>
         </a>
       </div>
       <div className="image-holder">

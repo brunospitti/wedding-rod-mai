@@ -22,9 +22,9 @@ export const HomePage = ({ data }) => {
       form = {},
       friends = {},
       parents = {},
-      by_our_side: byOurSide = {},
+      byOurSide = {},
       presents = {},
-      our_history: ourHistory = {},
+      ourStory = {},
       invite = {},
       welcome = {},
       finalPhrase = {},
@@ -63,15 +63,15 @@ export const HomePage = ({ data }) => {
           <Banner banner={banner} />
           <TextSection
             title={welcome.title}
-            subTitle={welcome.sub_title}
+            subTitle={welcome.subTitle}
             description={welcome.description}
           />
           <IrelandPhoto />
           <Invite invite={invite} />
           <TextSection
-            title={ourHistory.title}
-            subTitle={ourHistory.sub_title}
-            description={ourHistory.description}
+            title={ourStory.title}
+            subTitle={ourStory.subTitle}
+            description={ourStory.description}
           />
           <LoadablePhotosCarousel />
           <Presents presents={presents} />
@@ -79,7 +79,7 @@ export const HomePage = ({ data }) => {
           <Form form={form} />
           <TextSection
             title={finalPhrase.title}
-            subTitle={finalPhrase.sub_title}
+            subTitle={finalPhrase.subTitle}
             description={finalPhrase.description}
           />
         </>

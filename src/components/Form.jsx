@@ -27,7 +27,7 @@ export const Form = (props) => {
       setName(targetValue);
     } else if (targetName === 'phone') {
       setPhone(targetValue);
-    } else if (targetName === 'e_mail') {
+    } else if (targetName === 'eMail') {
       setEMail(targetValue);
     }
   };
@@ -69,16 +69,16 @@ export const Form = (props) => {
   };
 
   const {
-    success_button = 'Default success_button',
-    success_subtitle = 'Default success_subtitle',
-    success_title = 'Default success_title',
+    successTitle = 'Default successTitle',
+    successSubTitle = 'Default successSubTitle',
+    successButtonText = 'Default successButtonText',
     name: labelName,
     namePlaceholder,
     eMailPlaceholder,
     phonePlaceholder,
-    e_mail,
+    eMail: eMailLabel,
     phone: phoneLabel,
-    not_going: not_goingLabel,
+    notGoing: notGoingLabel,
     maybe: maybeLabel,
     going: goingLabel,
   } = props.form;
@@ -87,16 +87,16 @@ export const Form = (props) => {
     <>
       <TextSection
         title={props.form.title}
-        subTitle={props.form.sub_title}
+        subTitle={props.form.subTitle}
         description={props.form.description}
       />
       <StyledFormHolder>
         {success ? (
           <StyledSuccess>
             <div>
-              <span>{success_title.replace('{name}', name)}</span>
-              {success_subtitle}
-              <StyledButton onClick={handleFormBack}>{success_button}</StyledButton>
+              <span>{successTitle.replace('{name}', name)}</span>
+              {successSubTitle}
+              <StyledButton onClick={handleFormBack}>{successButtonText}</StyledButton>
             </div>
           </StyledSuccess>
         ) : (
@@ -142,11 +142,11 @@ export const Form = (props) => {
               />
             </StyledLabel>
             <StyledLabel>
-              {e_mail}
+              {eMailLabel}
               <StyledInput
                 type="text"
-                name="e_mail"
-                placeholder={eMailPlaceholder || e_mail}
+                name="eMailLabel"
+                placeholder={eMailPlaceholder || eMailLabel}
                 onChange={handleChange}
                 value={eMail}
               />
@@ -161,7 +161,7 @@ export const Form = (props) => {
             </StyledButton>
 
             <StyledButton type="submit" onClick={() => setGoing('no')}>
-              <div>{not_goingLabel}</div>
+              <div>{notGoingLabel}</div>
             </StyledButton>
           </form>
         )}

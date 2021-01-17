@@ -10,7 +10,7 @@ import { BgImage } from './BgImage';
 export const Banner = ({ banner }) => {
   const bannerDate = new Date(banner.date);
   const daysLeft = differenceInCalendarDays(bannerDate, new Date());
-  const daysLeftDisplay = banner.days_left.replace('{days_left}', daysLeft);
+  const daysLeftDisplay = banner.daysLeft.replace('{daysLeft}', daysLeft);
 
   const {
     allFile: {

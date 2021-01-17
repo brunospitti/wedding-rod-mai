@@ -19,7 +19,7 @@ export const mainInfo = graphql`
   fragment mainInfo on MarkdownRemark {
     frontmatter {
       title
-      sub_title
+      subTitle
       description
     }
   }
@@ -49,7 +49,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             date
-            days_left
+            daysLeft
           }
         }
       }
@@ -71,9 +71,7 @@ export const pageQuery = graphql`
       }
     }
 
-    our_history: allMarkdownRemark(
-      filter: { fields: { slug: { regex: "/our-history/" } } }
-    ) {
+    ourStory: allMarkdownRemark(filter: { fields: { slug: { regex: "/ourStory/" } } }) {
       edges {
         node {
           ...mainInfo
@@ -86,26 +84,24 @@ export const pageQuery = graphql`
         node {
           frontmatter {
             title
-            sub_title
+            subTitle
             description
-            button_link
-            button_text
+            buttonLink
+            buttonText
           }
         }
       }
     }
 
-    by_our_side: allMarkdownRemark(
-      filter: { fields: { slug: { regex: "/by-our-side/" } } }
-    ) {
+    byOurSide: allMarkdownRemark(filter: { fields: { slug: { regex: "/byOurSide/" } } }) {
       edges {
         node {
           frontmatter {
             title
             sub_title
             description
-            parents_title
-            friends_title
+            parentsTitle
+            friendsTitle
           }
         }
       }
@@ -132,14 +128,14 @@ export const pageQuery = graphql`
         node {
           frontmatter {
             title
-            sub_title
+            subTitle
             description
             name
-            e_mail
+            eMail
             phone
-            not_going
-            maybe
             going
+            maybe
+            notGoing
           }
         }
       }

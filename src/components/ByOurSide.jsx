@@ -15,7 +15,7 @@ export const ByOurSide = ({ byOurSide, friends, parents }) => {
     <StyledByOurSide theme={theme}>
       <TextSection
         title={byOurSide.title}
-        subTitle={byOurSide.sub_title}
+        subTitle={byOurSide.subTitle}
         description={byOurSide.description}
       />
 
@@ -25,13 +25,13 @@ export const ByOurSide = ({ byOurSide, friends, parents }) => {
             className={activePictures === parents ? 'active' : null}
             onClick={() => setActivePictures(parents)}
           >
-            {byOurSide.parents_title}
+            {byOurSide.parentsTitle}
           </button>
           <button
             className={activePictures === friends ? 'active' : null}
             onClick={() => setActivePictures(friends)}
           >
-            {byOurSide.friends_title}
+            {byOurSide.friendsTitle}
           </button>
         </div>
         <div className="pictures-holder">
