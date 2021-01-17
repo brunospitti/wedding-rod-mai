@@ -96,7 +96,7 @@ export const Form = (props) => {
           <form
             name="confirmation"
             method="post"
-            netlify-honeypot="bot-field"
+            data-netlify-honeypot="bot-field"
             data-netlify="true"
             netlify
             onSubmit={handleSubmit}
