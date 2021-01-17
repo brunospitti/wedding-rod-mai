@@ -6,11 +6,14 @@ import { breakpoints, colors } from '../assets/globalStyles';
 
 import { HomePage } from '../components/HomePage';
 import { Theme } from '../components/hooks/Theme/Theme';
+import { Name } from '../components/hooks/Name/Name';
 
 const IndexPage = (props) => {
   return (
     <Theme>
-      <HomePage data={props.data} />
+      <Name>
+        <HomePage data={props.data} />
+      </Name>
     </Theme>
   );
 };
@@ -98,7 +101,7 @@ export const pageQuery = graphql`
         node {
           frontmatter {
             title
-            sub_title
+            subTitle
             description
             parentsTitle
             friendsTitle

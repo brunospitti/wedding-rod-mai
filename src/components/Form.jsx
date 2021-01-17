@@ -4,6 +4,7 @@ import BackgroundImage from 'gatsby-background-image';
 
 import { colors, breakpoints } from '../assets/globalStyles';
 import { TextSection } from '../components/TextSection';
+import { useName } from './hooks/Name/useName';
 
 const encode = (data) => {
   return Object.keys(data)
@@ -12,42 +13,35 @@ const encode = (data) => {
 };
 
 export const Form = (props) => {
+  const { name: nameFromContext } = useName();
+
   const [success, setSuccess] = React.useState(false);
-  const [name, setName] = React.useState(props.name);
+  const [name, setName] = React.useState(nameFromContext);
   const [eMail, setEMail] = React.useState();
   const [phone, setPhone] = React.useState();
   const [going, setGoing] = React.useState();
   const [botField, setBotField] = React.useState();
 
-  const handleChange = (e) => {
-    const { name: targetName, value: targetValue } = e.target;
-    if (targetName === 'bot-field') {
-      setBotField(targetValue);
-    } else if (targetName === 'name') {
-      setName(targetValue);
-    } else if (targetName === 'phone') {
-      setPhone(targetValue);
-    } else if (targetName === 'eMail') {
-      setEMail(targetValue);
-    }
-  };
+  const subTitleDisplay = props.form.subTitle.replace('{name}', nameFromContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
 
+    const submitValue = {
+      'form-name': form.getAttribute('name'),
+      success,
+      name,
+      eMail,
+      phone,
+      going,
+      botField,
+    };
+
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': form.getAttribute('name'),
-        success,
-        name,
-        eMail,
-        phone,
-        going,
-        botField,
-      }),
+      body: encode(submitValue),
     })
       .then(() => handleSuccess())
       .catch((err) => handleError(err));
@@ -69,6 +63,8 @@ export const Form = (props) => {
   };
 
   const {
+    title,
+    description,
     nameLabel,
     eMailLabel,
     phoneLabel,
@@ -85,11 +81,7 @@ export const Form = (props) => {
 
   return (
     <>
-      <TextSection
-        title={props.form.title}
-        subTitle={props.form.subTitle}
-        description={props.form.description}
-      />
+      <TextSection title={title} subTitle={subTitleDisplay} description={description} />
       <StyledFormHolder>
         {success ? (
           <StyledSuccess>
@@ -116,7 +108,8 @@ export const Form = (props) => {
             <input type="hidden" name="form-name" value="confirmation" />
             <p hidden>
               <label>
-                Don’t fill this out: <input name="bot-field" onChange={handleChange} />
+                Don’t fill this out:{' '}
+                <input name="bot-field" onChange={(e) => setBotField(e.target.value)} />
               </label>
             </p>
             <StyledLabel>
@@ -126,7 +119,7 @@ export const Form = (props) => {
                 type="text"
                 name="name"
                 placeholder={namePlaceholder || nameLabel}
-                onChange={handleChange}
+                onChange={(e) => setName(e.target.value)}
                 value={name}
               />
             </StyledLabel>
@@ -137,7 +130,7 @@ export const Form = (props) => {
                 type="text"
                 name="phone"
                 placeholder={phonePlaceholder || phoneLabel}
-                onChange={handleChange}
+                onChange={(e) => setPhone(e.target.value)}
                 value={phone}
               />
             </StyledLabel>
@@ -147,7 +140,7 @@ export const Form = (props) => {
                 type="text"
                 name="eMailLabel"
                 placeholder={eMailPlaceholder || eMailLabel}
-                onChange={handleChange}
+                onChange={(e) => setEMail(e.target.value)}
                 value={eMail}
               />
             </StyledLabel>
