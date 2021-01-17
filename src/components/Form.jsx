@@ -105,7 +105,6 @@ export const Form = (props) => {
           >
             {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
             <input type="hidden" name="form-name" value="confirmation" />
-            <input type="hidden" name="going" />
             <p hidden>
               <label>
                 Don’t fill this out:{' '}
@@ -145,6 +144,7 @@ export const Form = (props) => {
               />
             </StyledLabel>
 
+            <input hidden type="hidden" name="going" />
             <StyledButton type="submit" onClick={() => setGoing('yes')}>
               <div>{goingLabel}</div>
             </StyledButton>
