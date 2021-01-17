@@ -95,7 +95,7 @@ export const Form = (props) => {
           // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
           <form
             name="confirmation"
-            method="post"
+            method="POST"
             action="/thanks/"
             data-netlify="true"
             data-netlify-honeypot="bot-field"

@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Casamento Vitória e Bruno Spitti',
+    title: 'Casamento Maiara e Rodrigo',
     description: 'Você está convidado!',
   },
   plugins: [
