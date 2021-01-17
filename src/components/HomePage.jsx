@@ -16,12 +16,18 @@ import { Form } from './Form';
 
 export const HomePage = ({ data }) => {
   const [fontLoaded, setFontLoaded] = useState(false);
+  const [dataLoaded, setDataLoaded] = useState(false);
   const [
     {
-      banner = {},
-      form = {},
-      friends = {},
-      parents = {},
+      banner = {
+        date: new Date(),
+        daysLeft: '',
+      },
+      form = {
+        subTitle: '',
+      },
+      friends = [],
+      parents = [],
       byOurSide = {},
       presents = {},
       ourStory = {},
@@ -34,6 +40,7 @@ export const HomePage = ({ data }) => {
 
   useEffect(() => {
     setNormalizedData(dataNormalize(data));
+    setDataLoaded(true);
   }, [data]);
 
   const font = new FontFaceObserver('Hello Beautiful');
@@ -56,10 +63,12 @@ export const HomePage = ({ data }) => {
     },
   });
 
+  const classNames = `HomePage ${fontLoaded && dataLoaded ? 'loaded' : ''}`;
+
   return (
     <Layout>
-      {fontLoaded ? (
-        <>
+      <StyledHomePage className={classNames}>
+        <div className="content">
           <Banner banner={banner} />
           <TextSection
             title={welcome.title}
@@ -82,10 +91,27 @@ export const HomePage = ({ data }) => {
             subTitle={finalPhrase.subTitle}
             description={finalPhrase.description}
           />
-        </>
-      ) : (
-        <div>loading</div>
-      )}
+        </div>
+
+        <div className="loading">loading</div>
+      </StyledHomePage>
     </Layout>
   );
 };
+
+const StyledHomePage = styled.div`
+  .loading {
+    display: block;
+  }
+  .content {
+    display: none;
+  }
+  &.loaded {
+    .loading {
+      display: none;
+    }
+    .content {
+      display: block;
+    }
+  }
+`;

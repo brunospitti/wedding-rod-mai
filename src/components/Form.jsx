@@ -98,7 +98,6 @@ export const Form = (props) => {
             method="post"
             data-netlify-honeypot="bot-field"
             data-netlify="true"
-            netlify
             onSubmit={handleSubmit}
             onKeyPress={(e) => {
               e.key === 'Enter' && e.preventDefault();

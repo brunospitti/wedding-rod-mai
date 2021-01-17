@@ -9,7 +9,11 @@ import { breakpoints, fontFamilyTitle } from '../assets/globalStyles';
 export const ByOurSide = ({ byOurSide, friends, parents }) => {
   const { theme } = useTheme();
 
-  const [activePictures, setActivePictures] = React.useState(parents);
+  const [activePictures, setActivePictures] = React.useState([]);
+
+  React.useEffect(() => {
+    setActivePictures(parents);
+  }, [parents]);
 
   return (
     <StyledByOurSide theme={theme}>
