@@ -95,10 +95,10 @@ export const Form = (props) => {
           // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
           <form
             name="confirmation"
-            method="POST"
-            action="/thanks/"
+            method="post"
+            netlify-honeypot="bot-field"
             data-netlify="true"
-            data-netlify-honeypot="bot-field"
+            netlify
             onSubmit={handleSubmit}
             onKeyPress={(e) => {
               e.key === 'Enter' && e.preventDefault();
