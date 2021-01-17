@@ -137,7 +137,7 @@ export const Form = (props) => {
               {eMailLabel}
               <StyledInput
                 type="text"
-                name="eMailLabel"
+                name="eMail"
                 placeholder={eMailPlaceholder || eMailLabel}
                 onChange={(e) => setEMail(e.target.value)}
                 value={eMail}
