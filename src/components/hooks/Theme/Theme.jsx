@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { ThemeProvider } from '../../contexts/ThemeContext';
 
 export const Theme = ({ children }) => {
+  const [theme, setTheme] = React.useState({});
   const {
     allMarkdownRemark: {
       edges: [
@@ -32,7 +33,9 @@ export const Theme = ({ children }) => {
     }
   `);
 
-  const [theme, setTheme] = React.useState(themeQuery);
+  React.useEffect(() => {
+    setTheme(themeQuery.allMarkdownRemark?.edges[0].node?.frontmatter);
+  }, [themeQuery]);
 
   return (
     <ThemeProvider
