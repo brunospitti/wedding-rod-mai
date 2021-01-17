@@ -14,8 +14,9 @@ const encode = (data) => {
 export const Form = (props) => {
   const [success, setSuccess] = React.useState(false);
   const [name, setName] = React.useState(props.name);
-  const [number, setNumber] = React.useState(0);
-  const [pickUpLocation, setPickUpLocation] = React.useState('');
+  const [eMail, setEMail] = React.useState();
+  const [phone, setPhone] = React.useState();
+  const [going, setGoing] = React.useState();
   const [botField, setBotField] = React.useState();
 
   const handleChange = (e) => {
@@ -24,18 +25,17 @@ export const Form = (props) => {
       setBotField(targetValue);
     } else if (targetName === 'name') {
       setName(targetValue);
-    } else if (targetName === 'number') {
-      setNumber(targetValue);
+    } else if (targetName === 'phone') {
+      setPhone(targetValue);
+    } else if (targetName === 'e_mail') {
+      setEMail(targetValue);
     }
-  };
-
-  const handleRadioChange = (e) => {
-    setPickUpLocation(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
+
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -43,8 +43,10 @@ export const Form = (props) => {
         'form-name': form.getAttribute('name'),
         success,
         name,
-        number,
-        pickUpLocation,
+        eMail,
+        phone,
+        going,
+        botField,
       }),
     })
       .then(() => handleSuccess())
@@ -62,117 +64,110 @@ export const Form = (props) => {
   const handleFormBack = () => {
     setSuccess(false);
     setName('');
-    setNumber(0);
-    setPickUpLocation('');
+    setEMail('');
+    setPhone('');
   };
 
   const {
+    success_button = 'Default success_button',
+    success_subtitle = 'Default success_subtitle',
+    success_title = 'Default success_title',
     name: labelName,
-    button: buttonLabel,
-    location,
-    seats,
-    success_button,
-    success_subtitle,
-    success_title,
+    namePlaceholder,
+    eMailPlaceholder,
+    phonePlaceholder,
+    e_mail,
+    phone: phoneLabel,
+    not_going: not_goingLabel,
+    maybe: maybeLabel,
+    going: goingLabel,
   } = props.form;
 
   return (
-    <StyledFormHolder>
+    <>
       <TextSection
         title={props.form.title}
         subTitle={props.form.sub_title}
         description={props.form.description}
       />
-      {success ? (
-        <StyledSuccess>
-          <div>
-            <span>{success_title.replace('{name}', name)}</span>
-            {success_subtitle}
-            <StyledButton onClick={handleFormBack}>{success_button}</StyledButton>
-          </div>
-        </StyledSuccess>
-      ) : (
-        <form
-          name="confirmation"
-          method="post"
-          action="/thanks/"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-          onSubmit={handleSubmit}
-        >
-          {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-          <input type="hidden" name="form-name" value="confirmation" />
-          <p hidden>
-            <label>
-              Don’t fill this out: <input name="bot-field" onChange={handleChange} />
-            </label>
-          </p>
-          <StyledLabel>
-            {labelName}
-            <StyledInput
-              required
-              type="text"
-              name="name"
-              placeholder={labelName}
-              onChange={handleChange}
-              value={name}
-            />
-          </StyledLabel>
-          <StyledLabel>
-            {seats}
-            <StyledInput
-              required
-              min="0"
-              type="number"
-              name="number"
-              placeholder={seats}
-              onChange={handleChange}
-              value={number}
-            />
-          </StyledLabel>
-          <StyledLabel>{location}</StyledLabel>
-          <StyledRadiosHolder>
-            <label htmlFor="vila-prudente">
-              <input
-                type="radio"
-                id="vila-prudente"
-                name="pickUpLocation"
-                value="vila-prudente"
-                onChange={handleRadioChange}
+      <StyledFormHolder>
+        {success ? (
+          <StyledSuccess>
+            <div>
+              <span>{success_title.replace('{name}', name)}</span>
+              {success_subtitle}
+              <StyledButton onClick={handleFormBack}>{success_button}</StyledButton>
+            </div>
+          </StyledSuccess>
+        ) : (
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+          <form
+            name="confirmation"
+            method="post"
+            action="/thanks/"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            onSubmit={handleSubmit}
+            onKeyPress={(e) => {
+              e.key === 'Enter' && e.preventDefault();
+            }}
+          >
+            {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
+            <input type="hidden" name="form-name" value="confirmation" />
+            <p hidden>
+              <label>
+                Don’t fill this out: <input name="bot-field" onChange={handleChange} />
+              </label>
+            </p>
+            <StyledLabel>
+              {labelName} *
+              <StyledInput
+                required
+                type="text"
+                name="name"
+                placeholder={namePlaceholder || labelName}
+                onChange={handleChange}
+                value={name}
               />
-              Metrô Vila Prudente
-            </label>
-            <label htmlFor="orlando-chiodi">
-              <input
-                type="radio"
-                id="orlando-chiodi"
-                name="pickUpLocation"
-                value="orlando-chiodi"
-                onChange={handleRadioChange}
+            </StyledLabel>
+            <StyledLabel>
+              {phoneLabel} *
+              <StyledInput
+                required
+                type="text"
+                name="phone"
+                placeholder={phonePlaceholder || phoneLabel}
+                onChange={handleChange}
+                value={phone}
               />
-              Rua Orlando Chiodi
-            </label>
-            <label htmlFor="santo-andre">
-              <input
-                type="radio"
-                id="santo-andre"
-                name="pickUpLocation"
-                value="santo-andre"
-                onChange={handleRadioChange}
+            </StyledLabel>
+            <StyledLabel>
+              {e_mail}
+              <StyledInput
+                type="text"
+                name="e_mail"
+                placeholder={eMailPlaceholder || e_mail}
+                onChange={handleChange}
+                value={eMail}
               />
-              Santo André
-            </label>
-          </StyledRadiosHolder>
+            </StyledLabel>
 
-          {name != '' && number > 0 && pickUpLocation != '' && (
-            <StyledButton type="submit">
-              <div>{buttonLabel}</div>
+            <StyledButton type="submit" onClick={() => setGoing('yes')}>
+              <div>{goingLabel}</div>
             </StyledButton>
-          )}
-        </form>
-      )}
-      <StyledFlower04 fluid={props.flowerImage} />
-    </StyledFormHolder>
+
+            <StyledButton type="submit" onClick={() => setGoing('maybe')}>
+              <div>{maybeLabel}</div>
+            </StyledButton>
+
+            <StyledButton type="submit" onClick={() => setGoing('no')}>
+              <div>{not_goingLabel}</div>
+            </StyledButton>
+          </form>
+        )}
+        <StyledFlower04 fluid={props.flowerImage} />
+      </StyledFormHolder>
+    </>
   );
 };
 
@@ -210,27 +205,6 @@ const StyledInput = styled.input`
     color: #d0d0d0;
     opacity: 1;
     font-size: 0.9em;
-  }
-`;
-
-const StyledRadiosHolder = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1.5em;
-  @media ${breakpoints.mobileSmall} {
-    flex-direction: column;
-  }
-  label {
-    display: flex;
-    align-items: baseline;
-    @media ${breakpoints.mobileSmall} {
-      &:not(:last-child) {
-        margin-bottom: 0.5em;
-      }
-    }
-    input {
-      margin: 0 0.5em 0 0;
-    }
   }
 `;
 
