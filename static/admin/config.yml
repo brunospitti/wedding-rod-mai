@@ -162,12 +162,18 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Sub Title", name: "subTitle", widget: "string" }
       - { label: "Description", name: "description", widget: "text", required: false}
-      - { label: "Name", name: "name", widget: "string" }
-      - { label: "E-mail", name: "eMail", widget: "string" }
-      - { label: "Phone", name: "phone", widget: "string" }
+      - { label: "Label - Name", name: "nameLabel", widget: "string" }
+      - { label: "Label - e-mail", name: "eMailLabel", widget: "string" }
+      - { label: "Label - Phone", name: "phoneLabel", widget: "string" }
+      - { label: "Placeholder - Name", name: "namePlaceholder", widget: "string" }
+      - { label: "Placeholder - e-mail", name: "eMailPlaceholder", widget: "string" }
+      - { label: "Placeholder - Phone", name: "phonePlaceholder", widget: "string" }
       - { label: "Going", name: "going", widget: "string" }
       - { label: "Maybe", name: "maybe", widget: "string" }
       - { label: "Not Going", name: "notGoing", widget: "string" }
+      - { label: "Success - Title", name: "successTitle", widget: "string" }
+      - { label: "Success - Sub Title", name: "successSubTitle", widget: "string" }
+      - { label: "Success - Button Text", name: "successButtonText", widget: "string" }
   
   - name: "finalPhrase"
     label: "Final Phrase"

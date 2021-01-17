@@ -130,12 +130,18 @@ export const pageQuery = graphql`
             title
             subTitle
             description
-            name
-            eMail
-            phone
+            nameLabel
+            eMailLabel
+            phoneLabel
+            namePlaceholder
+            eMailPlaceholder
+            phonePlaceholder
             going
             maybe
             notGoing
+            successTitle
+            successSubTitle
+            successButtonText
           }
         }
       }

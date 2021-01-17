@@ -1,7 +1,6 @@
 ---
 templateKey: invite
 title: Invitean
-sub-title: Ha hai. Bem boladoam, bem boladoam.
 subTitle: O prêmio é em barras de ouro, que vale mais que dinheiroam.
 description: Silvio Santos Ipsum Ma tem ou não tem o celular do milhãouamm? É
   namoro ou amizadeemm? O arriscam tuduam, valendo um milhão de reaisuam. Ma o

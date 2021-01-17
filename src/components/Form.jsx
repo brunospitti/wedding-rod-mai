@@ -69,18 +69,18 @@ export const Form = (props) => {
   };
 
   const {
-    successTitle = 'Default successTitle',
-    successSubTitle = 'Default successSubTitle',
-    successButtonText = 'Default successButtonText',
-    name: labelName,
+    nameLabel,
+    eMailLabel,
+    phoneLabel,
     namePlaceholder,
     eMailPlaceholder,
     phonePlaceholder,
-    eMail: eMailLabel,
-    phone: phoneLabel,
     notGoing: notGoingLabel,
     maybe: maybeLabel,
     going: goingLabel,
+    successTitle,
+    successSubTitle,
+    successButtonText,
   } = props.form;
 
   return (
@@ -120,12 +120,12 @@ export const Form = (props) => {
               </label>
             </p>
             <StyledLabel>
-              {labelName} *
+              {nameLabel} *
               <StyledInput
                 required
                 type="text"
                 name="name"
-                placeholder={namePlaceholder || labelName}
+                placeholder={namePlaceholder || nameLabel}
                 onChange={handleChange}
                 value={name}
               />
