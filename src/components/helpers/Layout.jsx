@@ -7,6 +7,7 @@ import { useTheme } from '../hooks/Theme/useTheme';
 
 export const Layout = ({ children }) => {
   const { theme } = useTheme();
+  console.log('🚀 ~ file: Layout.jsx ~ line 10 ~ Layout ~ theme', theme);
 
   return (
     <>
