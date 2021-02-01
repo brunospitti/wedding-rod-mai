@@ -32,6 +32,7 @@ export const parentsInfo = graphql`
   fragment parentsInfo on MarkdownRemark {
     frontmatter {
       title
+      order
       image {
         childImageSharp {
           fixed(height: 200, quality: 90) {
@@ -112,7 +113,7 @@ export const pageQuery = graphql`
 
     parents: allMarkdownRemark(
       filter: { fields: { slug: { regex: "/parents/" } } }
-      sort: { fields: frontmatter___image___name }
+      sort: { fields: frontmatter___order }
     ) {
       edges {
         node {
@@ -123,7 +124,7 @@ export const pageQuery = graphql`
 
     friends: allMarkdownRemark(
       filter: { fields: { slug: { regex: "/friends/" } } }
-      sort: { fields: frontmatter___image___name }
+      sort: { fields: frontmatter___order }
     ) {
       edges {
         node {
