@@ -133,6 +133,7 @@ collections:
         }
       - { label: "Image", name: "image", widget: "image" }
       - { label: "Name", name: "title", widget: "string" }
+      - { label: "Order", name: "order", widget: "number" }
   
   - name: "friends"
     label: "Friends"
@@ -147,6 +148,7 @@ collections:
         }
       - { label: "Image", name: "image", widget: "image" }
       - { label: "Name", name: "title", widget: "string" }
+      - { label: "Order", name: "order", widget: "number" }
   
   - name: "form"
     label: "Form"

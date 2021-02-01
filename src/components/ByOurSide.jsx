@@ -43,10 +43,7 @@ export const ByOurSide = ({ byOurSide, friends, parents }) => {
             return (
               <div className="person-holder" key={person.title}>
                 <div className="image-holder">
-                  <BgImage
-                    fixedImage={person.image.childImageSharp.fixed}
-                    backgroundColor="transparent"
-                  />
+                  <StyledBackgroundImage fixed={person.image.childImageSharp.fixed} />
                 </div>
                 <div className="name">{person.title}</div>
               </div>
@@ -59,6 +56,12 @@ export const ByOurSide = ({ byOurSide, friends, parents }) => {
 };
 
 // styled components
+
+const StyledBackgroundImage = styled(BackgroundImage)`
+  width: 100% !important;
+  height: 100% !important;
+  background-size: contain !important;
+`;
 
 const StyledByOurSide = styled.div`
   .buttons-holder {
@@ -84,17 +87,20 @@ const StyledByOurSide = styled.div`
     }
   }
   .image-holder {
-    height: 150px;
-    width: 150px;
+    height: 100%;
+    width: 100%;
     margin: auto;
   }
   .pictures-holder {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
   }
   .person-holder {
     margin-bottom: 20px;
     text-align: center;
     font-style: italic;
+    width: calc(100% / 4);
+    height: 170px;
   }
 `;
