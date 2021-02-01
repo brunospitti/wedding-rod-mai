@@ -1,5 +1,5 @@
 ---
 templateKey: friends
-image: /img/carousel-01.jpg
+image: /img/carousel-02.png
 title: Amigão tetega
 ---
