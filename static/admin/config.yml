@@ -37,6 +37,7 @@ collections:
           widget: "hidden",
           default: "banner",
         }
+      - { label: "Image", name: "image", widget: "image" }
       - { label: "Names", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "DD.MM.YYYY", time_format: false }
       - { label: "Days Left", name: "daysLeft", widget: "string"}
@@ -55,6 +56,7 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Sub Title", name: "subTitle", widget: "string" }
       - { label: "Description", name: "description", widget: "text", required: false}
+      - { label: "Image", name: "image", widget: "image" }
   
   - name: "invite"
     label: "Invite"
