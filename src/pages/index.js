@@ -32,7 +32,6 @@ export const parentsInfo = graphql`
   fragment parentsInfo on MarkdownRemark {
     frontmatter {
       title
-      order
       image {
         childImageSharp {
           fixed(height: 200, quality: 90) {
