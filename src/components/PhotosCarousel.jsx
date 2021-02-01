@@ -1,18 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import { transparentize } from 'polished';
+
 import { Carousel } from 'react-responsive-carousel';
 import BackgroundImage from 'gatsby-background-image';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import { breakpoints, colors } from '../assets/globalStyles';
+import { breakpoints } from '../assets/globalStyles';
 import { useTheme } from './hooks/Theme/useTheme';
 
 import { NonStretchedImg } from './helpers/NonStretchedImg';
 
-export const PhotosCarousel = () => {
+export const PhotosCarousel = ({ pattern }) => {
   const { theme } = useTheme();
 
-  const { photos, pattern } = useStaticQuery(graphql`
+  const { photos } = useStaticQuery(graphql`
     query PhotosCarousel {
       photos: allImageSharp(
         filter: { fluid: { originalName: { regex: "/^carousel/" } } }
@@ -29,19 +31,11 @@ export const PhotosCarousel = () => {
           }
         }
       }
-
-      pattern: file(relativePath: { eq: "pattern.png" }) {
-        childImageSharp {
-          fluid(quality: 90) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
     }
   `);
 
   return (
-    <StyledCarousel>
+    <StyledCarousel theme={theme}>
       <StyledPattern
         theme={theme}
         fluid={pattern.childImageSharp.fluid}
@@ -114,7 +108,7 @@ const StyledCarousel = styled.div`
           }
           &.selected {
             .gatsby-image-wrapper {
-              border: 6px solid #cccccc;
+              border: 6px solid ${({ theme }) => theme.bg};
               height: 500px !important;
               max-height: 500px !important;
               width: 100% !important;
@@ -144,6 +138,7 @@ const StyledCarousel = styled.div`
         }
       }
       .control-dots {
+        border-radius: 100px;
         background: rgba(255, 255, 255, 0.6);
         width: 575px;
         padding: 10px;
@@ -157,7 +152,7 @@ const StyledCarousel = styled.div`
           width: 100%;
         }
         .dot {
-          background: ${colors.secondary};
+          background: ${({ theme }) => theme.secondary};
           box-shadow: none;
           margin: auto;
 
@@ -167,16 +162,24 @@ const StyledCarousel = styled.div`
           }
         }
       }
-      .control-prev.control-arrow:before {
-        border-right-width: 12px;
+      .control-prev {
+        border-radius: 100px 0 0 100px;
+        &.control-arrow:before {
+          border-right-width: 12px;
+        }
       }
-      .control-next.control-arrow:before {
-        border-left-width: 12px;
+
+      .control-next {
+        border-radius: 0 100px 100px 0;
+        &.control-arrow:before {
+          border-left-width: 12px;
+        }
       }
+
       &.carousel-slider .control-arrow {
         opacity: 1;
         &:hover {
-          background: rgba(42, 88, 84, 0.3);
+          background: ${({ theme }) => transparentize(0.4, theme.secondary)};
         }
       }
     }
@@ -190,11 +193,11 @@ const StyledPattern = styled(BackgroundImage)`
   background-position: left;
   position: absolute !important;
   width: 100%;
-  height: 660px !important;
+  height: 100% !important;
   background-repeat: repeat-x !important;
   opacity: 0.3 !important;
   &:before,
   &:after {
-    box-shadow: 0 0 20px 30px ${(props) => props.theme.bg} inset;
+    box-shadow: 0 0 20px 30px ${({ theme }) => theme.bg} inset;
   }
 `;

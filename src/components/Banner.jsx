@@ -3,24 +3,39 @@ import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import differenceInCalendarDays from 'date-fns/differenceInCalendarDays';
 import format from 'date-fns/format';
+import BackgroundImage from 'gatsby-background-image';
 
-import { breakpoints, fontFamilyNames } from '../assets/globalStyles';
+import { breakpoints, fontFamilyNames, fontFamilyTitle } from '../assets/globalStyles';
 import { BgImage } from './BgImage';
 
-export const Banner = ({ banner }) => {
-  const bannerDate = new Date(banner.date);
+export const Banner = ({ banner: bannerData, pattern }) => {
+  const bannerDate = new Date(bannerData.date);
   const daysLeft = differenceInCalendarDays(bannerDate, new Date());
-  const daysLeftDisplay = banner.daysLeft.replace('{daysLeft}', daysLeft);
+  const daysLeftDisplay = bannerData.daysLeft.replace('{daysLeft}', daysLeft);
 
-  const {
-    allFile: {
-      childImageSharp: { fixed },
-    },
-  } = useStaticQuery(graphql`
-    query BannerImage {
-      allFile: file(relativePath: { eq: "banner.jpg" }) {
+  const { banner, calendar, heart } = useStaticQuery(graphql`
+    query BannerImages {
+      banner: file(relativePath: { eq: "banner.jpg" }) {
         childImageSharp {
           fixed(height: 650, quality: 100) {
+            originalName
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+
+      heart: file(relativePath: { eq: "heart.png" }) {
+        childImageSharp {
+          fixed(height: 55, quality: 100) {
+            originalName
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+
+      calendar: file(relativePath: { eq: "calendar.png" }) {
+        childImageSharp {
+          fixed(height: 30, quality: 100) {
             originalName
             ...GatsbyImageSharpFixed
           }
@@ -31,13 +46,31 @@ export const Banner = ({ banner }) => {
 
   return (
     <StyledBannerWrapper>
-      <BgImage fixedImage={fixed}>
-        <StyledTitle>
-          <span id="title">{banner.title}</span>
-          <span id="date">{format(bannerDate, 'dd.MM.yyyy')}</span>
-          <span id="days-left">{daysLeftDisplay}</span>
-        </StyledTitle>
-      </BgImage>
+      <StyledPattern fluid={pattern.childImageSharp.fluid} background="white" />
+      <div className="banner-image-holder">
+        <BgImage fixedImage={banner.childImageSharp.fixed}>
+          <StyledBannerContent>
+            <div className="text">
+              <div className="days-left-holder">
+                <div className="days-left">
+                  <BackgroundImage fixed={calendar.childImageSharp.fixed} />
+                  <span id="days-left-text">{daysLeftDisplay}</span>
+                </div>
+              </div>
+              <div className="main-text">
+                <span id="title">{bannerData.title}</span>
+                <div className="date-holder">
+                  <div className="date">
+                    <span id="date-text">{format(bannerDate, 'dd.MM.yyyy')}</span>
+                    <BackgroundImage fixed={heart.childImageSharp.fixed} />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-overlay" />
+          </StyledBannerContent>
+        </BgImage>
+      </div>
     </StyledBannerWrapper>
   );
 };
@@ -47,46 +80,81 @@ export const Banner = ({ banner }) => {
 const StyledBannerWrapper = styled.div`
   width: 100%;
   height: 650px;
+  position: relative;
+  .banner-image-holder {
+    height: 100%;
+    padding: 15px 0;
+  }
 `;
 
-const StyledTitle = styled.div`
-  padding-top: 2em;
-  @media ${breakpoints.mobile} {
-    padding-top: 5em;
+const StyledPattern = styled(BackgroundImage)`
+  background-size: contain;
+  display: block;
+  background-color: white;
+  background-position: left;
+  position: absolute !important;
+  width: 100%;
+  height: 100% !important;
+  background-repeat: repeat-x !important;
+  opacity: 0.3 !important;
+`;
+
+const StyledBannerContent = styled.div`
+  position: relative;
+  height: 100%;
+  .bg-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
   }
-  @media ${breakpoints.mobileSmall} {
-    padding-top: 4em;
-  }
-  span {
-    margin: auto;
-    text-align: center;
-    display: block;
-    line-height: 1;
-    color: white;
-    &#title {
-      font-family: ${fontFamilyNames};
-      width: 70%;
-      font-size: 7em;
-      margin-bottom: 0.15em;
-      border-bottom: 2px solid;
-      @media ${breakpoints.tabletSmall} {
-        width: 80%;
-      }
-      @media ${breakpoints.mobile} {
-        font-size: 5em;
-      }
-      @media ${breakpoints.mobileSmall} {
-        font-size: 4.5em;
-        line-height: 0.9em;
+  .text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    .days-left-holder {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px;
+      .days-left {
+        display: inline-flex;
+        align-items: center;
+        span {
+          margin-left: 10px;
+          font-size: 2em;
+          font-family: ${fontFamilyTitle};
+        }
       }
     }
-    &#date {
-      font-size: 1.5em;
-      @media ${breakpoints.mobile} {
-        font-size: 1.25em;
+    .main-text {
+      transform: rotate(-5deg);
+      padding-top: 100px;
+      .date-holder {
+        display: flex;
+        justify-content: center;
+        .date {
+          display: inline-flex;
+          align-items: center;
+          span {
+            letter-spacing: 5px;
+            margin-right: 15px;
+            font-family: ${fontFamilyNames};
+            font-size: 4em;
+          }
+        }
       }
-      @media ${breakpoints.mobileSmall} {
-        font-size: 1em;
+    }
+    span {
+      margin: auto;
+      text-align: center;
+      display: block;
+      line-height: 1;
+      color: white;
+      &#title {
+        font-family: ${fontFamilyNames};
+        font-size: 7em;
       }
     }
   }

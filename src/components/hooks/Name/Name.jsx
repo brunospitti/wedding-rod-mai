@@ -7,7 +7,7 @@ import { NameProvider } from '../../contexts/NameContext';
 export const Name = ({ children }) => {
   const [nameFromURL] = useQueryParam('name', StringParam);
 
-  const [name, setName] = React.useState(nameFromURL || 'Convidado');
+  const [name, setName] = React.useState(nameFromURL || '');
 
   return (
     <NameProvider

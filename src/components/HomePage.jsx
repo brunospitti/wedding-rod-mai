@@ -1,9 +1,10 @@
 import FontFaceObserver from 'fontfaceobserver';
 import React, { useState, useEffect } from 'react';
 import Loadable from 'react-loadable';
+import { useStaticQuery, graphql } from 'gatsby';
 
 import styled from 'styled-components';
-import { breakpoints, colors } from '../assets/globalStyles';
+import { breakpoints } from '../assets/globalStyles';
 import { Layout } from '../components/helpers/Layout';
 import { Banner } from '../components/Banner';
 import { TextSection } from '../components/TextSection';
@@ -13,6 +14,8 @@ import { Invite } from './Invite';
 import { Presents } from './Presents';
 import { ByOurSide } from './ByOurSide';
 import { Form } from './Form';
+
+import { Section, SectionRaw } from './helpers/Section';
 
 export const HomePage = ({ data }) => {
   const [fontLoaded, setFontLoaded] = useState(false);
@@ -43,6 +46,18 @@ export const HomePage = ({ data }) => {
     setDataLoaded(true);
   }, [data]);
 
+  const { pattern } = useStaticQuery(graphql`
+    query Pattern {
+      pattern: file(relativePath: { eq: "pattern.png" }) {
+        childImageSharp {
+          fluid(quality: 90) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `);
+
   const font = new FontFaceObserver('Hello Beautiful');
 
   font.load().then(
@@ -59,7 +74,7 @@ export const HomePage = ({ data }) => {
     loading: () => <div>loading</div>,
     render(loaded, props) {
       let Component = loaded.PhotosCarousel;
-      return <Component />;
+      return <Component {...props} />;
     },
   });
 
@@ -69,28 +84,44 @@ export const HomePage = ({ data }) => {
     <Layout>
       <StyledHomePage className={classNames}>
         <div className="content">
-          <Banner banner={banner} />
-          <TextSection
-            title={welcome.title}
-            subTitle={welcome.subTitle}
-            description={welcome.description}
-          />
-          <IrelandPhoto />
-          <Invite invite={invite} />
-          <TextSection
-            title={ourStory.title}
-            subTitle={ourStory.subTitle}
-            description={ourStory.description}
-          />
-          <LoadablePhotosCarousel />
-          <Presents presents={presents} />
-          <ByOurSide byOurSide={byOurSide} friends={friends} parents={parents} />
-          <Form form={form} />
-          <TextSection
-            title={finalPhrase.title}
-            subTitle={finalPhrase.subTitle}
-            description={finalPhrase.description}
-          />
+          <Banner banner={banner} pattern={pattern} />
+          <Section>
+            <TextSection
+              title={welcome.title}
+              subTitle={welcome.subTitle}
+              description={welcome.description}
+            />
+          </Section>
+          <SectionRaw>
+            <IrelandPhoto />
+          </SectionRaw>
+          <SectionRaw>
+            <Invite invite={invite} />
+          </SectionRaw>
+          <Section>
+            <TextSection
+              title={ourStory.title}
+              subTitle={ourStory.subTitle}
+              description={ourStory.description}
+            />
+            <LoadablePhotosCarousel pattern={pattern} />
+          </Section>
+          <Section>
+            <Presents presents={presents} />
+          </Section>
+          <Section>
+            <ByOurSide byOurSide={byOurSide} friends={friends} parents={parents} />
+          </Section>
+          <SectionRaw>
+            <Form form={form} />
+          </SectionRaw>
+          <Section>
+            <TextSection
+              title={finalPhrase.title}
+              subTitle={finalPhrase.subTitle}
+              description={finalPhrase.description}
+            />
+          </Section>
         </div>
 
         <div className="loading">loading</div>

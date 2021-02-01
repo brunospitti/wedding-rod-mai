@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { breakpoints, colors, fontFamilyTitle } from '../assets/globalStyles';
+import { breakpoints, fontFamilyTitle } from '../assets/globalStyles';
 import { useTheme } from './hooks/Theme/useTheme';
 
 export const Invite = ({ invite }) => {
   const { theme } = useTheme();
+  console.log('🚀 ~ file: Invite.jsx ~ line 9 ~ Invite ~ theme', theme);
 
   return <StyledInviteWrapper theme={theme}>{invite.title}</StyledInviteWrapper>;
 };

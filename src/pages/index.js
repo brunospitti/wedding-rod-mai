@@ -2,7 +2,7 @@ import React from 'react';
 import Loadable from 'react-loadable';
 import { graphql } from 'gatsby';
 
-import { breakpoints, colors } from '../assets/globalStyles';
+import { breakpoints } from '../assets/globalStyles';
 
 import { HomePage } from '../components/HomePage';
 import { Theme } from '../components/hooks/Theme/Theme';

@@ -3,13 +3,14 @@ import styled from 'styled-components';
 import BackgroundImage from 'gatsby-background-image';
 import { useTheme } from './hooks/Theme/useTheme';
 
-export const BgImage = ({ fixedImage, children, backgroundColor }) => {
+export const BgImage = ({ fixedImage, fluidImage, children, backgroundColor }) => {
   const { theme } = useTheme();
 
   return (
     <StyledBgImage
       Tag="div"
       fixed={fixedImage}
+      fluid={fluidImage}
       backgroundColor={backgroundColor || theme.primary}
       data-loading="eager"
     >

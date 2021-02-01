@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { darken } from 'polished';
 import BackgroundImage from 'gatsby-background-image';
 
-import { colors, breakpoints } from '../assets/globalStyles';
+import { breakpoints } from '../assets/globalStyles';
 import { TextSection } from '../components/TextSection';
+
 import { useName } from './hooks/Name/useName';
+import { useTheme } from './hooks/Theme/useTheme';
 
 const encode = (data) => {
   return Object.keys(data)
@@ -13,6 +16,7 @@ const encode = (data) => {
 };
 
 export const Form = (props) => {
+  const { theme } = useTheme();
   const { name: nameFromContext } = useName();
 
   const [success, setSuccess] = React.useState(false);
@@ -82,15 +86,17 @@ export const Form = (props) => {
   return (
     <>
       <TextSection title={title} subTitle={subTitleDisplay} description={description} />
-      <StyledFormHolder>
+      <StyledFormHolder theme={theme}>
         {success ? (
-          <StyledSuccess>
-            <div>
-              <span>{successTitle.replace('{name}', name)}</span>
-              {successSubTitle}
-              <StyledButton onClick={handleFormBack}>{successButtonText}</StyledButton>
+          <div className="success">
+            <span>{successTitle.replace('{name}', name)}</span>
+            {successSubTitle}
+            <div className="buttons-holder">
+              <button className="primary" onClick={handleFormBack}>
+                {successButtonText}
+              </button>
             </div>
-          </StyledSuccess>
+          </div>
         ) : (
           // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
           <form
@@ -111,9 +117,9 @@ export const Form = (props) => {
                 <input name="bot-field" onChange={(e) => setBotField(e.target.value)} />
               </label>
             </p>
-            <StyledLabel>
+            <label>
               {nameLabel} *
-              <StyledInput
+              <input
                 required
                 type="text"
                 name="name"
@@ -121,10 +127,10 @@ export const Form = (props) => {
                 onChange={(e) => setName(e.target.value)}
                 value={name}
               />
-            </StyledLabel>
-            <StyledLabel>
+            </label>
+            <label>
               {phoneLabel} *
-              <StyledInput
+              <input
                 required
                 type="text"
                 name="phone"
@@ -132,30 +138,36 @@ export const Form = (props) => {
                 onChange={(e) => setPhone(e.target.value)}
                 value={phone}
               />
-            </StyledLabel>
-            <StyledLabel>
+            </label>
+            <label>
               {eMailLabel}
-              <StyledInput
+              <input
                 type="text"
                 name="eMail"
                 placeholder={eMailPlaceholder || eMailLabel}
                 onChange={(e) => setEMail(e.target.value)}
                 value={eMail}
               />
-            </StyledLabel>
+            </label>
 
             <input hidden type="hidden" name="going" />
-            <StyledButton type="submit" onClick={() => setGoing('yes')}>
-              <div>{goingLabel}</div>
-            </StyledButton>
+            <div className="buttons-holder">
+              <button
+                className="secondary"
+                type="submit"
+                onClick={() => setGoing('maybe')}
+              >
+                {maybeLabel}
+              </button>
 
-            <StyledButton type="submit" onClick={() => setGoing('maybe')}>
-              <div>{maybeLabel}</div>
-            </StyledButton>
+              <button className="primary" type="submit" onClick={() => setGoing('yes')}>
+                {goingLabel}
+              </button>
 
-            <StyledButton type="submit" onClick={() => setGoing('no')}>
-              <div>{notGoingLabel}</div>
-            </StyledButton>
+              <button className="secondary" type="submit" onClick={() => setGoing('no')}>
+                {notGoingLabel}
+              </button>
+            </div>
           </form>
         )}
         <StyledFlower04 fluid={props.flowerImage} />
@@ -170,9 +182,10 @@ const StyledFormHolder = styled.div`
   margin: 5em auto 10em;
   display: flex;
   flex-direction: column;
-  background: white;
+  background: rgba(255, 255, 255, 0.7);
   padding: 2em 2em 0.5em;
   transition: all 0.5s ease;
+  border-radius: 10px;
   @media ${breakpoints.tablet} {
     width: calc(75% + 3em);
     padding: 1.5em 1.5em 0.5em;
@@ -181,54 +194,66 @@ const StyledFormHolder = styled.div`
     width: 100%;
     padding: 1em 0.5em 0.5em;
   }
-`;
 
-const StyledLabel = styled.label`
-  font-weight: bold;
-  display: block;
-  margin-bottom: 1.5em;
-`;
-
-const StyledInput = styled.input`
-  width: 100%;
-  border: 1px solid ${colors.primary};
-  padding: 10px;
-  margin-top: 0.7em;
-  &::placeholder {
-    color: #d0d0d0;
-    opacity: 1;
-    font-size: 0.9em;
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 1.5em;
+    input:not([type='hidden']) {
+      width: 100%;
+      border: 1px solid ${({ theme }) => theme.secondary};
+      padding: 10px;
+      margin-top: 0.7em;
+      border-radius: 5px;
+      &::placeholder {
+        color: #d0d0d0;
+        opacity: 1;
+        font-size: 0.9em;
+      }
+    }
   }
-`;
 
-const StyledButton = styled.button`
-  margin: 1em auto 1.5em;
-  position: relative;
-  background: ${colors.primary};
-  color: white;
-  cursor: pointer;
-  width: 100%;
-  padding: 5px;
-  border: 0;
-  text-decoration: none;
-  transition: all 0.5s ease;
-  &:hover {
-    background: #234a47;
+  .buttons-holder {
+    display: flex;
+    button {
+      flex: 1;
+      margin: 1em 0 1.5em;
+      position: relative;
+      cursor: pointer;
+      padding: 12px 5px;
+      border: 0;
+      transition: all 0.5s ease;
+      border-radius: 10px;
+      &:not(:first-child):not(:last-child) {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+      &.primary {
+        background: ${({ theme }) => theme.primary};
+        color: ${({ theme }) => theme.primaryContrast};
+        border: 3px solid ${({ theme }) => theme.primary};
+        &:hover {
+          border-color: ${({ theme }) => theme.secondary};
+        }
+      }
+      &.secondary {
+        background: transparent;
+        color: ${({ theme }) => theme.primary};
+        border: 1px solid ${({ theme }) => theme.primary};
+        &:hover {
+          background: ${({ theme }) => darken(0.05, theme.bg)};
+          color: ${({ theme }) => theme.text};
+          border-color: ${({ theme }) => theme.text};
+        }
+      }
+    }
   }
-  div {
-    color: white;
-    text-align: center;
-    padding: 0.65em;
-    border: 1px solid;
-  }
-`;
 
-const StyledSuccess = styled.div`
-  div {
+  .success {
     font-size: 0.9em;
     span {
       display: block;
-      color: #2b5854;
+      color: ${({ theme }) => theme.primary};
       font-size: 1.2em;
       margin-bottom: 0.5em;
     }

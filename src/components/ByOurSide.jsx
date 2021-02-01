@@ -74,6 +74,7 @@ const StyledByOurSide = styled.div`
       background: transparent;
       cursor: pointer;
       border: 0;
+      border-radius: 3px;
       transition: 0.25s all ease;
       border-bottom: 4px solid transparent;
       &.active,

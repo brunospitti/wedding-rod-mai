@@ -1,14 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const colors = {
-  primary: '#b27579',
-  primaryContrast: '#ffffff',
-  secondary: '#e4b0b2',
-  tertiary: '#bda092',
-  text: '#575d69',
-  bgColor: '#f7f7f7',
-};
-
 export const fontFamily =
   "'Open Sans', -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', 'segoe ui', helvetica, roboto, noto, arial, sans-serif";
 

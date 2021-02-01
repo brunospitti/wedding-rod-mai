@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import { breakpoints, colors, fontFamilyTitle } from '../assets/globalStyles';
+import { breakpoints, fontFamilyTitle } from '../assets/globalStyles';
 import { useTheme } from './hooks/Theme/useTheme';
 import { TextSection } from '../components/TextSection';
 import { BgImage } from './BgImage';
@@ -54,6 +54,7 @@ const StyledPresentsWrapper = styled.div`
     justify-content: center;
   }
   a {
+    border-radius: 10px;
     background: linear-gradient(
       ${(props) => props.theme.secondary},
       ${(props) => props.theme.primary}
