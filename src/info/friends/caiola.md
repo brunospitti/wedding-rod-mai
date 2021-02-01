@@ -1,5 +1,5 @@
 ---
 templateKey: friends
-image: /img/padrinhos-bruno-06-caio.jpg
-title: Caiola
+image: /img/carousel-03.png
+title: Irma do Rod
 ---
