@@ -1,5 +1,6 @@
 ---
 templateKey: parents
-image: /img/padrinhos-bruno-07-rod.jpg
+image: /img/carousel-03.png
 title: Pai Rod é Brabo
+order: 2
 ---
