@@ -2,29 +2,18 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
+import { useTheme } from './hooks/Theme/useTheme';
 import { BgImage } from './BgImage';
 
-export const IrelandPhoto = () => {
-  const {
-    allFile: {
-      childImageSharp: { fixed },
-    },
-  } = useStaticQuery(graphql`
-    query IrelandPhoto {
-      allFile: file(relativePath: { eq: "banner.jpg" }) {
-        childImageSharp {
-          fixed(height: 650, quality: 100) {
-            originalName
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `);
+export const IrelandPhoto = ({ photo }) => {
+  const { theme } = useTheme();
 
   return (
-    <StyledIrelandPhotoWrapper>
-      <BgImage fixedImage={fixed} />
+    <StyledIrelandPhotoWrapper theme={theme}>
+      <div className="background-strip"></div>
+      <div className="image-holder">
+        <BgImage fixedImage={photo.childImageSharp.fixed} />
+      </div>
     </StyledIrelandPhotoWrapper>
   );
 };
@@ -32,9 +21,18 @@ export const IrelandPhoto = () => {
 // styled components
 
 const StyledIrelandPhotoWrapper = styled.div`
-  width: 100%;
-  height: 500px;
-  max-width: 900px;
-  display: block;
-  margin: 100px auto;
+  display: flex;
+  justify-content: center;
+  .background-strip {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    background: ${({ theme }) => theme.tertiary};
+    top: 140px;
+  }
+  .image-holder {
+    width: 100%;
+    height: 520px;
+    max-width: 670px;
+  }
 `;

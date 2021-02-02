@@ -25,6 +25,7 @@ export const HomePage = ({ data }) => {
       banner = {
         date: new Date(),
         daysLeft: '',
+        image: { childImageSharp: { fixed: '' } },
       },
       form = {
         subTitle: '',
@@ -35,7 +36,9 @@ export const HomePage = ({ data }) => {
       presents = {},
       ourStory = {},
       invite = {},
-      welcome = {},
+      welcome = {
+        image: { childImageSharp: { fixed: '' } },
+      },
       finalPhrase = {},
     },
     setNormalizedData,
@@ -93,7 +96,7 @@ export const HomePage = ({ data }) => {
             />
           </Section>
           <SectionRaw>
-            <IrelandPhoto />
+            <IrelandPhoto photo={welcome.image} />
           </SectionRaw>
           <SectionRaw>
             <Invite invite={invite} />

@@ -13,17 +13,8 @@ export const Banner = ({ banner: bannerData, pattern }) => {
   const daysLeft = differenceInCalendarDays(bannerDate, new Date());
   const daysLeftDisplay = bannerData.daysLeft.replace('{daysLeft}', daysLeft);
 
-  const { banner, calendar, heart } = useStaticQuery(graphql`
+  const { calendar, heart } = useStaticQuery(graphql`
     query BannerImages {
-      banner: file(relativePath: { eq: "banner.jpg" }) {
-        childImageSharp {
-          fixed(height: 650, quality: 100) {
-            originalName
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-
       heart: file(relativePath: { eq: "heart.png" }) {
         childImageSharp {
           fixed(height: 55, quality: 100) {
@@ -48,7 +39,7 @@ export const Banner = ({ banner: bannerData, pattern }) => {
     <StyledBannerWrapper>
       <StyledPattern fluid={pattern.childImageSharp.fluid} background="white" />
       <div className="banner-image-holder">
-        <BgImage fixedImage={banner.childImageSharp.fixed}>
+        <BgImage fixedImage={bannerData.image.childImageSharp.fixed}>
           <StyledBannerContent>
             <div className="text">
               <div className="days-left-holder">
@@ -79,7 +70,7 @@ export const Banner = ({ banner: bannerData, pattern }) => {
 
 const StyledBannerWrapper = styled.div`
   width: 100%;
-  height: 650px;
+  height: 750px;
   position: relative;
   .banner-image-holder {
     height: 100%;

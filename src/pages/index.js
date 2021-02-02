@@ -54,6 +54,14 @@ export const pageQuery = graphql`
             title
             date
             daysLeft
+            image {
+              childImageSharp {
+                fixed(height: 900, quality: 90) {
+                  originalName
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
           }
         }
       }
@@ -62,7 +70,19 @@ export const pageQuery = graphql`
     welcome: allMarkdownRemark(filter: { fields: { slug: { regex: "/welcome/" } } }) {
       edges {
         node {
-          ...mainInfo
+          frontmatter {
+            title
+            subTitle
+            description
+            image {
+              childImageSharp {
+                fixed(height: 700, quality: 90) {
+                  originalName
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
+          }
         }
       }
     }
