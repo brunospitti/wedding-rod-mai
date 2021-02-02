@@ -1,6 +1,6 @@
 ---
 templateKey: parents
-image: /img/carousel-02.png
+image: /img/parents-01.png
 title: Cabeça de cavalo (caray)
 order: 1
 ---
