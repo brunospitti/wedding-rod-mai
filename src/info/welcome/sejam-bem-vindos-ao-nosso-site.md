@@ -8,4 +8,5 @@ description: Silvio Santos Ipsum Ma tem ou não tem o celular do milhãouamm? É
   textuans ha haae. Ha hai. Bem boladoam, bem boladoam. Bem gozadoam. Boca
   sujuam... sem vergonhuamm. O prêmio é em barras de ouro, que vale mais que
   dinheiroam.
+image: /img/foto_tematica.jpg
 ---
