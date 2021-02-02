@@ -1,6 +1,6 @@
 ---
 templateKey: parents
-image: /img/carousel-03.png
+image: /img/parents-02.png
 title: Pai Rod é Brabo
 order: 2
 ---
