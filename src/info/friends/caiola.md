@@ -1,6 +1,6 @@
 ---
 templateKey: friends
-image: /img/carousel-03.png
+image: /img/padrinhos-03.png
 title: Irma do Rod
 order: 3
 ---
