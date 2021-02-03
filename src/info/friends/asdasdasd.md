@@ -1,6 +1,6 @@
 ---
 templateKey: friends
 image: /img/padrinhos-06.png
-title: asdasdasd
+title: Maysa
 order: 6
 ---
