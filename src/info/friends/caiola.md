@@ -1,6 +1,6 @@
 ---
 templateKey: friends
 image: /img/padrinhos-03.png
-title: Irma do Rod
+title: Bruna
 order: 3
 ---
