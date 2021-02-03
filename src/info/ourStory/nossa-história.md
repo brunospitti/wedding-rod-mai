@@ -1,12 +1,11 @@
 ---
 templateKey: ourStory
 title: Nossa História
-subTitle: O prêmio é em barras de ouro, que vale mais que dinheiroam.
-description: |-
-  Silvio Santos Ipsum Ma tem ou não tem o celular do milhãouamm? É
-    namoro ou amizadeemm? O arriscam tuduam, valendo um milhão de reaisuam. Ma o
-    Silvio Santos Ipsum é muitoam interesanteam. Com ele ma você vai gerar
-    textuans ha haae. Ha hai. Bem boladoam, bem boladoam. Bem gozadoam. Boca
-    sujuam... sem vergonhuamm. O prêmio é em barras de ouro, que vale mais que
-    dinheiroam.
+subTitle: Como é bom recordar! Conheça os detalhes da nossa caminhada até esse
+  grande sonho do nosso casamento!
+description: "Quando nos conhecemos, nem imaginávamos que um dia tudo isso
+  acabaria como um final de conto de fadas, com a realização do nosso grande
+  sonho: o casamento! O coração aperta, o dia está chegando, começa a passar um
+  filme de tudo o que passamos para chegar até aqui. E como é bom relembrar cada
+  pedacinho da nossa história de amor!"
 ---
