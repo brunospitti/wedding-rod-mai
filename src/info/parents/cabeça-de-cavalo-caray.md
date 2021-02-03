@@ -1,6 +1,6 @@
 ---
 templateKey: parents
 image: /img/parents-01.png
-title: Cabeça de cavalo (caray)
+title: Maria Lucia
 order: 1
 ---
