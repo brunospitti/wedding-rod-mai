@@ -1,7 +1,7 @@
 ---
 templateKey: form
 title: Confirmação de presença
-subTitle: Eai, {name}. Queremos muito você lá!
+subTitle: "{name}. Queremos muito você lá!"
 nameLabel: Nome
 eMailLabel: e-mail
 phoneLabel: Celular
