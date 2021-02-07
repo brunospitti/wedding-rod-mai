@@ -8,9 +8,9 @@ phoneLabel: Celular
 namePlaceholder: seu nome...
 eMailPlaceholder: seu email...
 phonePlaceholder: seu celular...
-going: Opa!
-maybe: Se pá
-notGoing: Vô não, pokas
+going: Irei
+maybe: Talvez
+notGoing: Não irei
 successSubTitle: Recebemos sua confirmação!
 successButtonText: Refazer sua confirmação
 name: Nome
