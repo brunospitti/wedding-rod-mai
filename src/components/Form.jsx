@@ -26,7 +26,7 @@ export const Form = (props) => {
   const [going, setGoing] = React.useState();
   const [botField, setBotField] = React.useState();
 
-  const subTitleDisplay = props.form.subTitle.replace('{name}', nameFromContext);
+  const subTitleDisplay = props.form.subTitle.replace('{name}', nameFromContext || 'Hey');
 
   const handleSubmit = (e) => {
     e.preventDefault();
