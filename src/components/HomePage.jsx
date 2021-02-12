@@ -149,7 +149,7 @@ export const HomePage = ({ data }) => {
         </div>
 
         <div className="loading">
-          <Loading heart={heart} names={banner.title} />
+          <Loading heart={heart} />
         </div>
       </StyledHomePage>
     </Layout>

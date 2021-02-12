@@ -9,8 +9,7 @@ export const Loading = ({ names, heart }) => {
   const { theme } = useTheme();
 
   return (
-    <StyledLoadingWrapper theme={theme}>
-      <div className="title">{names}</div>
+    <StyledLoadingWrapper>
       <BackgroundImage className="heart" fixed={heart.childImageSharp.fixed} />
     </StyledLoadingWrapper>
   );
@@ -42,12 +41,6 @@ const StyledLoadingWrapper = styled.div`
   justify-content: center;
   height: 100vh;
   flex-direction: column;
-
-  .title {
-    font-family: ${fontFamilyTitle};
-    font-size: 7em;
-    color: ${(props) => props.theme.primary};
-  }
 
   .heart {
     animation: heartbeat 2s infinite;
