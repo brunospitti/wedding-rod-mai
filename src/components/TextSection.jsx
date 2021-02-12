@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { breakpoints } from '../assets/globalStyles';
 import { Title } from './Title';
 import { useTheme } from './hooks/Theme/useTheme';
+import { TextFromString } from './helpers/Content';
 
 export const TextSection = ({ title, subTitle, description }) => {
   const { theme } = useTheme();
@@ -12,7 +13,7 @@ export const TextSection = ({ title, subTitle, description }) => {
     <StyledTextSection theme={theme}>
       <Title>{title}</Title>
       {subTitle && <div className="text sub-title">{subTitle}</div>}
-      {description && <div className="text description">{description}</div>}
+      {description && <TextFromString className="text description" text={description} />}
     </StyledTextSection>
   );
 };
@@ -32,6 +33,6 @@ const StyledTextSection = styled.div`
     margin-bottom: 2em;
   }
   .description {
-    font-weight: 300;
+    font-weight: 200;
   }
 `;

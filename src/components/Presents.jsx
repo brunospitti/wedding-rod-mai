@@ -67,6 +67,10 @@ const StyledPresentsWrapper = styled.div`
     justify-content: center;
     box-shadow: 0 4px 0 0 ${(props) => props.theme.primary};
     border-bottom: 4px solid ${(props) => props.theme.bg};
+    transition: all 0.5s ease;
+    &:hover {
+      padding: 23px 90px;
+    }
     span {
       color: ${(props) => props.theme.primaryContrast};
       font-size: 1.25em;

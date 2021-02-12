@@ -73,7 +73,7 @@ const StyledCarousel = styled.div`
   .carousel-root {
     .carousel {
       .slider {
-        height: 600px;
+        height: 800px;
         align-items: center;
         @media ${breakpoints.mobile} {
           height: 450px;
@@ -189,15 +189,7 @@ const StyledCarousel = styled.div`
 const StyledPattern = styled(BackgroundImage)`
   background-size: contain;
   display: block;
-  background-color: white;
-  background-position: left;
   position: absolute !important;
   width: 100%;
   height: 100% !important;
-  background-repeat: repeat-x !important;
-  opacity: 0.3 !important;
-  &:before,
-  &:after {
-    box-shadow: 0 0 20px 30px ${({ theme }) => theme.bg} inset;
-  }
 `;

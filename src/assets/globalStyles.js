@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const fontFamily =
-  "'Open Sans', -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', 'segoe ui', helvetica, roboto, noto, arial, sans-serif";
+  "'Poppins', -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', 'segoe ui', helvetica, roboto, noto, arial, sans-serif";
 
 export const fontFamilyTitle = `'Amatic SC', ${fontFamily}`;
 export const fontFamilyNames = `'Hello Beautiful', ${fontFamilyTitle}`;
@@ -54,7 +54,7 @@ export const GlobalStyles = createGlobalStyle`
 		display: block;
 	}
 	body {
-		line-height: 1;
+		line-height: 1.3;
 	}
 	ol, ul {
 		list-style: none;

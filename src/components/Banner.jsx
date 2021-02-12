@@ -8,22 +8,13 @@ import BackgroundImage from 'gatsby-background-image';
 import { breakpoints, fontFamilyNames, fontFamilyTitle } from '../assets/globalStyles';
 import { BgImage } from './BgImage';
 
-export const Banner = ({ banner: bannerData, pattern }) => {
+export const Banner = ({ banner: bannerData, pattern, heart }) => {
   const bannerDate = new Date(bannerData.date);
   const daysLeft = differenceInCalendarDays(bannerDate, new Date());
   const daysLeftDisplay = bannerData.daysLeft.replace('{daysLeft}', daysLeft);
 
-  const { calendar, heart } = useStaticQuery(graphql`
+  const { calendar } = useStaticQuery(graphql`
     query BannerImages {
-      heart: file(relativePath: { eq: "heart.png" }) {
-        childImageSharp {
-          fixed(height: 55, quality: 100) {
-            originalName
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-
       calendar: file(relativePath: { eq: "calendar.png" }) {
         childImageSharp {
           fixed(height: 30, quality: 100) {

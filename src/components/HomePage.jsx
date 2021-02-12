@@ -6,6 +6,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import { breakpoints } from '../assets/globalStyles';
 import { Layout } from '../components/helpers/Layout';
+import { Loading } from '../components/Loading';
 import { Banner } from '../components/Banner';
 import { TextSection } from '../components/TextSection';
 import { dataNormalize } from '../helpers/dataNormalize';
@@ -49,12 +50,29 @@ export const HomePage = ({ data }) => {
     setDataLoaded(true);
   }, [data]);
 
-  const { pattern } = useStaticQuery(graphql`
+  const { pattern, frame, heart } = useStaticQuery(graphql`
     query Pattern {
       pattern: file(relativePath: { eq: "pattern.png" }) {
         childImageSharp {
           fluid(quality: 90) {
             ...GatsbyImageSharpFluid
+          }
+        }
+      }
+
+      frame: file(relativePath: { eq: "frame-test.png" }) {
+        childImageSharp {
+          fluid(quality: 90) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+
+      heart: file(relativePath: { eq: "heart.png" }) {
+        childImageSharp {
+          fixed(height: 55, quality: 100) {
+            originalName
+            ...GatsbyImageSharpFixed
           }
         }
       }
@@ -72,9 +90,12 @@ export const HomePage = ({ data }) => {
     }
   );
 
+  const LoadableLoading = () => <div>loading</div>;
+
   const LoadablePhotosCarousel = Loadable({
     loader: () => import('./PhotosCarousel'),
-    loading: () => <div>loading</div>,
+    // eslint-disable-next-line react/display-name
+    loading: () => <LoadableLoading />,
     render(loaded, props) {
       let Component = loaded.PhotosCarousel;
       return <Component {...props} />;
@@ -87,7 +108,7 @@ export const HomePage = ({ data }) => {
     <Layout>
       <StyledHomePage className={classNames}>
         <div className="content">
-          <Banner banner={banner} pattern={pattern} />
+          <Banner banner={banner} pattern={pattern} heart={heart} />
           <Section>
             <TextSection
               title={welcome.title}
@@ -107,7 +128,7 @@ export const HomePage = ({ data }) => {
               subTitle={ourStory.subTitle}
               description={ourStory.description}
             />
-            <LoadablePhotosCarousel pattern={pattern} />
+            <LoadablePhotosCarousel pattern={frame} />
           </Section>
           <Section>
             <Presents presents={presents} />
@@ -127,7 +148,9 @@ export const HomePage = ({ data }) => {
           </Section>
         </div>
 
-        <div className="loading">loading</div>
+        <div className="loading">
+          <Loading heart={heart} names={banner.title} />
+        </div>
       </StyledHomePage>
     </Layout>
   );

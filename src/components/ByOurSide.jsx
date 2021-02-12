@@ -93,7 +93,6 @@ const StyledByOurSide = styled.div`
     .buttons-holder {
       display: flex;
       justify-content: space-around;
-      width: 80%;
       margin: 0 auto 20px;
       button {
         padding: 0 30px 5px;
@@ -125,11 +124,14 @@ const StyledByOurSide = styled.div`
       animation: appear 0.75s;
     }
     .person-holder {
-      margin-bottom: 20px;
+      margin-bottom: 60px;
       text-align: center;
       font-style: italic;
       width: calc(100% / 4);
       height: 170px;
+      .name {
+        margin-top: 5px;
+      }
     }
     &.parents-active {
       .person-holder {
