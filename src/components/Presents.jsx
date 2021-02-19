@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
+import BackgroundImage from 'gatsby-background-image';
 
 import { breakpoints, fontFamilyTitle } from '../assets/globalStyles';
 import { useTheme } from './hooks/Theme/useTheme';
@@ -15,10 +16,10 @@ export const Presents = ({ presents }) => {
       childImageSharp: { fixed },
     },
   } = useStaticQuery(graphql`
-    query GaelicFigure {
-      allFile: file(relativePath: { eq: "gaelic.png" }) {
+    query RingsDivider {
+      allFile: file(relativePath: { eq: "rings-divider.png" }) {
         childImageSharp {
-          fixed(height: 77, quality: 90) {
+          fixed(height: 80, quality: 100) {
             originalName
             ...GatsbyImageSharpFixed
           }
@@ -40,7 +41,7 @@ export const Presents = ({ presents }) => {
         </a>
       </div>
       <div className="image-holder">
-        <BgImage fixedImage={fixed} backgroundColor="transparent" />
+        <BackgroundImage fixed={fixed} backgroundColor="transparent" />
       </div>
     </StyledPresentsWrapper>
   );
@@ -77,9 +78,8 @@ const StyledPresentsWrapper = styled.div`
     }
   }
   .image-holder {
-    height: 70px;
-    width: 70px;
-    display: block;
-    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+    margin: 100px 0;
   }
 `;

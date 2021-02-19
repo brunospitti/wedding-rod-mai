@@ -8,16 +8,16 @@ import BackgroundImage from 'gatsby-background-image';
 import { breakpoints, fontFamilyNames, fontFamilyTitle } from '../assets/globalStyles';
 import { BgImage } from './BgImage';
 
-export const Banner = ({ banner: bannerData, pattern, heart }) => {
+export const Banner = ({ banner: bannerData, heart }) => {
   const bannerDate = new Date(bannerData.date);
   const daysLeft = differenceInCalendarDays(bannerDate, new Date());
   const daysLeftDisplay = bannerData.daysLeft.replace('{daysLeft}', daysLeft);
 
   const { calendar } = useStaticQuery(graphql`
-    query BannerImages {
+    query Calendar {
       calendar: file(relativePath: { eq: "calendar.png" }) {
         childImageSharp {
-          fixed(height: 30, quality: 100) {
+          fixed(height: 30, quality: 90) {
             originalName
             ...GatsbyImageSharpFixed
           }
@@ -28,7 +28,6 @@ export const Banner = ({ banner: bannerData, pattern, heart }) => {
 
   return (
     <StyledBannerWrapper>
-      <StyledPattern fluid={pattern.childImageSharp.fluid} background="white" />
       <div className="banner-image-holder">
         <BgImage fixedImage={bannerData.image.childImageSharp.fixed}>
           <StyledBannerContent>
@@ -65,20 +64,7 @@ const StyledBannerWrapper = styled.div`
   position: relative;
   .banner-image-holder {
     height: 100%;
-    padding: 15px 0;
   }
-`;
-
-const StyledPattern = styled(BackgroundImage)`
-  background-size: contain;
-  display: block;
-  background-color: white;
-  background-position: left;
-  position: absolute !important;
-  width: 100%;
-  height: 100% !important;
-  background-repeat: repeat-x !important;
-  opacity: 0.3 !important;
 `;
 
 const StyledBannerContent = styled.div`

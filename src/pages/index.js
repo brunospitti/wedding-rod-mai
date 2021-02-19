@@ -76,12 +76,22 @@ export const pageQuery = graphql`
             description
             image {
               childImageSharp {
-                fixed(height: 700, quality: 90) {
+                fixed(height: 500, quality: 90) {
                   originalName
                   ...GatsbyImageSharpFixed
                 }
               }
             }
+          }
+        }
+      }
+    }
+
+    ireland: allMarkdownRemark(filter: { fields: { slug: { regex: "/ireland/" } } }) {
+      edges {
+        node {
+          frontmatter {
+            description
           }
         }
       }

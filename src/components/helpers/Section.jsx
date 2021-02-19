@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const SectionRaw = ({ children }) => {
-  return <StyledSection>{children}</StyledSection>;
+export const SectionRaw = ({ children, className }) => {
+  return <StyledSection className={className}>{children}</StyledSection>;
 };
 
-export const Section = ({ children }) => (
-  <SectionRaw>
+export const Section = ({ children, className }) => (
+  <SectionRaw className={className}>
     <StyledMainContainer>{children}</StyledMainContainer>
   </SectionRaw>
 );

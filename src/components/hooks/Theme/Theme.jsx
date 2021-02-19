@@ -25,6 +25,7 @@ export const Theme = ({ children }) => {
               tertiary
               text
               bg
+              irelandSectionBg
             }
           }
         }

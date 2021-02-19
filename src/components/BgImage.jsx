@@ -8,6 +8,7 @@ export const BgImage = ({ fixedImage, fluidImage, children, backgroundColor }) =
 
   return (
     <StyledBgImage
+      className="background-image"
       Tag="div"
       fixed={fixedImage}
       fluid={fluidImage}

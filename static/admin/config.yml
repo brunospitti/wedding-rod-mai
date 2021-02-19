@@ -25,6 +25,7 @@ collections:
       - { label: "tertiary", name: "tertiary", widget: "color", allowInput: true, default: "#bda092" }
       - { label: "text", name: "text", widget: "color", allowInput: true, default: "#575d69" }
       - { label: "bg", name: "bg", widget: "color", allowInput: true, default: "#f7f7f7" }
+      - { label: "Ireland Section Bg", name: "irelandSectionBg", widget: "color", allowInput: true, default: "#eccbcb" }
 
   - name: "banner"
     label: "Banner"
@@ -57,6 +58,20 @@ collections:
       - { label: "Sub Title", name: "subTitle", widget: "string" }
       - { label: "Description", name: "description", widget: "text", required: false}
       - { label: "Image", name: "image", widget: "image" }
+  
+  - name: "ireland"
+    label: "Ireland"
+    folder: "src/info/ireland"
+    create: true
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "ireland",
+        }
+      - { label: "Title", name: "title", widget: "hidden", default: "Ireland", }
+      - { label: "Description", name: "description", widget: "text", required: false}
   
   - name: "invite"
     label: "Invite"

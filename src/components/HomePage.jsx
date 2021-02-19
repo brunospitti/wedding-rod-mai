@@ -2,6 +2,7 @@ import FontFaceObserver from 'fontfaceobserver';
 import React, { useState, useEffect } from 'react';
 import Loadable from 'react-loadable';
 import { useStaticQuery, graphql } from 'gatsby';
+import BackgroundImage from 'gatsby-background-image';
 
 import styled from 'styled-components';
 import { breakpoints } from '../assets/globalStyles';
@@ -28,6 +29,7 @@ export const HomePage = ({ data }) => {
         daysLeft: '',
         image: { childImageSharp: { fixed: '' } },
       },
+      ireland = {},
       form = {
         subTitle: '',
       },
@@ -50,8 +52,8 @@ export const HomePage = ({ data }) => {
     setDataLoaded(true);
   }, [data]);
 
-  const { pattern, frame, heart } = useStaticQuery(graphql`
-    query Pattern {
+  const { pattern, frame, heart, clover } = useStaticQuery(graphql`
+    query HomePageImages {
       pattern: file(relativePath: { eq: "pattern.png" }) {
         childImageSharp {
           fluid(quality: 90) {
@@ -70,7 +72,16 @@ export const HomePage = ({ data }) => {
 
       heart: file(relativePath: { eq: "heart.png" }) {
         childImageSharp {
-          fixed(height: 55, quality: 100) {
+          fixed(height: 55, quality: 90) {
+            originalName
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+
+      clover: file(relativePath: { eq: "clover.png" }) {
+        childImageSharp {
+          fixed(height: 64, quality: 90) {
             originalName
             ...GatsbyImageSharpFixed
           }
@@ -117,7 +128,7 @@ export const HomePage = ({ data }) => {
             />
           </Section>
           <SectionRaw>
-            <IrelandPhoto photo={welcome.image} />
+            <IrelandPhoto photo={welcome.image} ireland={ireland} />
           </SectionRaw>
           <SectionRaw>
             <Invite invite={invite} />
@@ -145,6 +156,14 @@ export const HomePage = ({ data }) => {
               subTitle={finalPhrase.subTitle}
               description={finalPhrase.description}
             />
+            <div className="rings-holder">
+              <BackgroundImage
+                className="background-image"
+                Tag="div"
+                fixed={clover?.childImageSharp?.fixed}
+                backgroundColor="transparent"
+              />
+            </div>
           </Section>
         </div>
 
@@ -170,5 +189,10 @@ const StyledHomePage = styled.div`
     .content {
       display: block;
     }
+  }
+
+  .rings-holder {
+    display: flex;
+    justify-content: center;
   }
 `;
