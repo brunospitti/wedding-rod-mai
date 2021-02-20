@@ -1,6 +1,6 @@
 ---
 templateKey: parents
-image: /img/parents-02.png
+image: /img/pais-noivo-2.png
 title: Neusa e Jaime
 order: 2
 ---
