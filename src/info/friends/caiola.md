@@ -1,6 +1,6 @@
 ---
 templateKey: friends
-image: /img/padrinhos-03.png
+image: /img/bruna-3.png
 title: Bruna
 order: 11
 ---
