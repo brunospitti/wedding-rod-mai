@@ -1,6 +1,6 @@
 ---
 templateKey: parents
-image: /img/parents-01.png
+image: /img/mae-noiva-2.png
 title: Maria Lucia
 order: 1
 ---
