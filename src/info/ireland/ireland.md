@@ -2,14 +2,16 @@
 templateKey: ireland
 title: Ireland
 description: >-
-  Silvio Santos Ipsum Você veio da caravana de ondeammm? Mah roda a roduamm. Ma
-  vale dérreaisam? É dinheiro ou não éam? O prêmio é em barras de ouro, que vale
-  mais que dinheiroam. Ma você, topa ou não topamm. Ma! Ao adquirir o carnê do
-  Baú, você estará concorrendo a um prêmio de cem mil reaisam.
+  Estamos muito felizes por compartilhar esse momento tão especial com quem
+  amamos. Este dia representa o início de uma nova jornada e a concretização de
+  um sonho: seguir juntos uma nova vida em outro país! 👫🏻✈️
 
 
-  Mah você não consegue né Moisés? Você não consegueam. Qual é a musicamm? Mah é a porta da esperançaam. Ma você, topa ou não topamm. Ha haeeee. Hi hi. Ma quem quer dinheiroam?
+  Siiimmmm, vamos morar na Irlanda! 😲 
 
 
-  Ma! Ao adquirir o carnê do Baú, você estará concorrendo a um prêmio de cem mil reaisam. Ma você está certo dissoam? É dinheiro ou não éam? Mah roda a roduamm. Ha hai. Bem boladoam, bem boladoam. Bem gozadoam. Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm.
+  Estamos juntos há 5 anos e sempre tivemos esse sonho de viver novas experiências, de conhecer novas culturas, lugares, pessoas e de quem sabe conhecer o mundo. Sentimos que esse momento chegou e estamos prontos para viver essas novas experiências.
+
+
+  Essa festa não é apenas para simbolizar nosso amor e recebermos a benção do padre, também vale como uma despedida! Afinal, exatos 1 mês depois, estaremos embarcando para Dublin! 🧳✈️
 ---
