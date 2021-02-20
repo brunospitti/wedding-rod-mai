@@ -1,6 +1,6 @@
 ---
 templateKey: friends
-image: /img/padrinhos-07.png
+image: /img/priscilla-3.png
 title: Priscila
 order: 9
 ---
