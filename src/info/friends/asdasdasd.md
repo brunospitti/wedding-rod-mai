@@ -1,6 +1,6 @@
 ---
 templateKey: friends
-image: /img/padrinhos-06.png
+image: /img/maysa-3.png
 title: Maysa
 order: 13
 ---
