@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import { breakpoints } from '../assets/globalStyles';
 import { Title } from './Title';
 import { useTheme } from './hooks/Theme/useTheme';
 import { TextFromString } from './helpers/Content';

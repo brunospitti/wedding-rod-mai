@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import BackgroundImage from 'gatsby-background-image';
 import { useTheme } from './hooks/Theme/useTheme';
 import { TextSection } from '../components/TextSection';
-import { BgImage } from './BgImage';
 import { breakpoints, fontFamilyTitle } from '../assets/globalStyles';
 
 const PicturesHolder = ({ activePictures }) => (
@@ -105,6 +104,12 @@ const StyledByOurSide = styled.div`
         border-radius: 3px;
         transition: 0.25s all ease;
         border-bottom: 4px solid transparent;
+        @media ${breakpoints.mobile} {
+          width: 50%;
+        }
+        @media ${breakpoints.mobileSmall} {
+          font-size: 1.7em;
+        }
         &.active,
         &:hover {
           border-bottom-color: ${(props) => props.theme.tertiary};
@@ -127,8 +132,15 @@ const StyledByOurSide = styled.div`
       margin-bottom: 60px;
       text-align: center;
       font-style: italic;
-      width: calc(100% / 4);
+      width: 25%;
       height: 170px;
+      @media ${breakpoints.tabletSmall} {
+        height: 150px;
+        width: 50%;
+      }
+      @media ${breakpoints.mobile} {
+        height: 130px;
+      }
       .name {
         margin-top: 5px;
       }
@@ -136,6 +148,15 @@ const StyledByOurSide = styled.div`
     &.parents-active {
       .person-holder {
         height: 230px;
+        @media ${breakpoints.tablet} {
+          width: 50%;
+        }
+        @media ${breakpoints.tabletSmall} {
+          height: 210px;
+        }
+        @media ${breakpoints.mobile} {
+          width: 100%;
+        }
       }
     }
   }

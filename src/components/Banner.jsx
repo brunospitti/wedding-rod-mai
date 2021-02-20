@@ -62,6 +62,9 @@ const StyledBannerWrapper = styled.div`
   width: 100%;
   height: 750px;
   position: relative;
+  @media ${breakpoints.mobile} {
+    height: 100vh;
+  }
   .banner-image-holder {
     height: 100%;
   }

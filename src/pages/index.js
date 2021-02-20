@@ -1,9 +1,5 @@
 import React from 'react';
-import Loadable from 'react-loadable';
 import { graphql } from 'gatsby';
-
-import { breakpoints } from '../assets/globalStyles';
-
 import { HomePage } from '../components/HomePage';
 import { Theme } from '../components/hooks/Theme/Theme';
 import { Name } from '../components/hooks/Name/Name';

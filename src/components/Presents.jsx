@@ -3,10 +3,9 @@ import styled from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 
-import { breakpoints, fontFamilyTitle } from '../assets/globalStyles';
+import { breakpoints } from '../assets/globalStyles';
 import { useTheme } from './hooks/Theme/useTheme';
 import { TextSection } from '../components/TextSection';
-import { BgImage } from './BgImage';
 
 export const Presents = ({ presents }) => {
   const { theme } = useTheme();
@@ -49,7 +48,6 @@ export const Presents = ({ presents }) => {
 
 // styled components
 const StyledPresentsWrapper = styled.div`
-  margin-bottom: 200px;
   .button-wrapper {
     display: flex;
     justify-content: center;
@@ -69,6 +67,10 @@ const StyledPresentsWrapper = styled.div`
     box-shadow: 0 4px 0 0 ${(props) => props.theme.primary};
     border-bottom: 4px solid ${(props) => props.theme.bg};
     transition: all 0.5s ease;
+    @media ${breakpoints.mobile} {
+      width: 90%;
+      padding: 20px 10px;
+    }
     &:hover {
       padding: 23px 90px;
     }

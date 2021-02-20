@@ -2,10 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
 import BackgroundImage from 'gatsby-background-image';
-
 import { breakpoints } from '../assets/globalStyles';
 import { TextSection } from '../components/TextSection';
-
 import { useName } from './hooks/Name/useName';
 import { useTheme } from './hooks/Theme/useTheme';
 
@@ -191,7 +189,7 @@ const StyledFormHolder = styled.div`
     padding: 1.5em 1.5em 0.5em;
   }
   @media ${breakpoints.mobileSmall} {
-    width: 100%;
+    width: 90%;
     padding: 1em 0.5em 0.5em;
   }
 

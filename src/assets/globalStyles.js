@@ -14,7 +14,7 @@ export const breakpoints = {
   tablet: `(max-width: 1024px)`,
   tabletSmall: `(max-width: 900px)`,
   mobile: `(max-width: 767px)`,
-  mobileSmall: `(max-width: 500px)`,
+  mobileSmall: `(max-width: 400px)`,
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -91,5 +91,8 @@ export const GlobalStyles = createGlobalStyle`
 		font-family: ${fontFamily};
 		font-size: 18px;
 		color: ${(props) => props.theme.text};
+		@media ${breakpoints.tabletSmall} {
+			font-size: 16px;
+		}
 	}
 `;

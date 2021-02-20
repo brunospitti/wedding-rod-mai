@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { breakpoints, fontFamilyTitle } from '../assets/globalStyles';
+import { fontFamilyTitle } from '../assets/globalStyles';
 import { useTheme } from './hooks/Theme/useTheme';
 
 export const Title = ({ children }) => {

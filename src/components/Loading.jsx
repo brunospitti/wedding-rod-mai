@@ -2,18 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import BackgroundImage from 'gatsby-background-image';
 
-import { breakpoints, fontFamilyTitle } from '../assets/globalStyles';
-import { useTheme } from './hooks/Theme/useTheme';
-
-export const Loading = ({ names, heart }) => {
-  const { theme } = useTheme();
-
-  return (
-    <StyledLoadingWrapper>
-      <BackgroundImage className="heart" fixed={heart.childImageSharp.fixed} />
-    </StyledLoadingWrapper>
-  );
-};
+export const Loading = ({ heart }) => (
+  <StyledLoadingWrapper>
+    <BackgroundImage className="heart" fixed={heart.childImageSharp.fixed} />
+  </StyledLoadingWrapper>
+);
 
 // styled components
 const StyledLoadingWrapper = styled.div`

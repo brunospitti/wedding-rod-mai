@@ -3,9 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Loadable from 'react-loadable';
 import { useStaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
-
 import styled from 'styled-components';
-import { breakpoints } from '../assets/globalStyles';
 import { Layout } from '../components/helpers/Layout';
 import { Loading } from '../components/Loading';
 import { Banner } from '../components/Banner';

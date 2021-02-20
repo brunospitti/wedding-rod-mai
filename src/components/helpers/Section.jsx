@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { breakpoints } from '../../assets/globalStyles';
 
 export const SectionRaw = ({ children, className }) => {
   return <StyledSection className={className}>{children}</StyledSection>;
@@ -26,4 +27,7 @@ const StyledMainContainer = styled.div`
   margin: 0 auto;
   position: relative;
   padding: 0 20px;
+  @media ${breakpoints.mobile} {
+    padding: 0 10px;
+  }
 `;

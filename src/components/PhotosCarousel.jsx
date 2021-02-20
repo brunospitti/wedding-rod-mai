@@ -192,4 +192,10 @@ const StyledPattern = styled(BackgroundImage)`
   position: absolute !important;
   width: 100%;
   height: 100% !important;
+  @media ${breakpoints.mobile} {
+    width: 140%;
+    height: 120% !important;
+    top: -10%;
+    left: -20%;
+  }
 `;

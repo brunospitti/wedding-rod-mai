@@ -12,9 +12,9 @@ const NotFoundPage = () => (
       <Layout>
         <Styled404Page>
           <Styled404Text>
-            <h2>I don't have this page you're looking for...</h2>
+            <h2>Esse é um site com uma página só.</h2>
             <p>
-              Why don't we go back to the <Link to="/">home page</Link>?
+              Volta pra ela clicando <Link to="/">aqui</Link>
             </p>
           </Styled404Text>
         </Styled404Page>

@@ -2,11 +2,10 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import BackgroundImage from 'gatsby-background-image';
-
 import { useTheme } from './hooks/Theme/useTheme';
 import { TextFromString } from './helpers/Content';
-import { BgImage } from './BgImage';
-import { Section, SectionRaw } from './helpers/Section';
+import { Section } from './helpers/Section';
+import { breakpoints } from '../assets/globalStyles';
 
 export const IrelandPhoto = ({ photo, ireland }) => {
   const { theme } = useTheme();
@@ -70,17 +69,28 @@ const StyledIrelandPhotoWrapper = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+        @media ${breakpoints.tabletSmall} {
+          flex-direction: column;
+        }
       }
       .text.description {
         color: ${({ theme }) => theme.bg};
         font-weight: 400;
         flex: 1;
+        @media ${breakpoints.tabletSmall} {
+          text-align: center;
+        }
       }
       .image-holder {
         width: 100%;
         height: 500px;
         max-width: 340px;
         margin-left: 100px;
+        @media ${breakpoints.tabletSmall} {
+          height: 350px;
+          max-width: 340px;
+          margin: 30px auto 0;
+        }
         .background-image {
           background-size: contain;
         }
