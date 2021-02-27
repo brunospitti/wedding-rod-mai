@@ -2,6 +2,6 @@
 templateKey: banner
 image: /img/mai-e-rod.jpg
 title: Maiara e Rodrigo
-date: 2021-05-01T17:04:35.540Z
+date: 2021-05-15T03:00:00.000Z
 daysLeft: Faltam {daysLeft} dias
 ---
