@@ -163,14 +163,14 @@ const StyledCarousel = styled.div`
         }
       }
       .control-prev {
-        border-radius: 100px 0 0 100px;
+        border-radius: 0 100px 100px 0;
         &.control-arrow:before {
           border-right-width: 12px;
         }
       }
 
       .control-next {
-        border-radius: 0 100px 100px 0;
+        border-radius: 100px 0 0 100px;
         &.control-arrow:before {
           border-left-width: 12px;
         }

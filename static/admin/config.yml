@@ -10,7 +10,6 @@ collections:
   - name: "theme"
     label: "Theme"
     folder: "src/info/theme"
-    create: true
     fields:
       - {
           label: "Template Key",
@@ -30,7 +29,6 @@ collections:
   - name: "banner"
     label: "Banner"
     folder: "src/info/banner"
-    create: true
     fields:
       - {
           label: "Template Key",
@@ -46,7 +44,6 @@ collections:
   - name: "welcome"
     label: "Welcome"
     folder: "src/info/welcome"
-    create: true
     fields:
       - {
           label: "Template Key",
@@ -62,7 +59,6 @@ collections:
   - name: "ireland"
     label: "Ireland"
     folder: "src/info/ireland"
-    create: true
     fields:
       - {
           label: "Template Key",
@@ -76,7 +72,6 @@ collections:
   - name: "invite"
     label: "Invite"
     folder: "src/info/invite"
-    create: true
     fields:
       - {
           label: "Template Key",
@@ -91,7 +86,6 @@ collections:
   - name: "ourStory"
     label: "Our Story"
     folder: "src/info/ourStory"
-    create: true
     fields:
       - {
           label: "Template Key",
@@ -106,7 +100,6 @@ collections:
   - name: "presents"
     label: "Presents"
     folder: "src/info/presents"
-    create: true
     fields:
       - {
           label: "Template Key",
@@ -123,7 +116,6 @@ collections:
   - name: "byOurSide"
     label: "By Our Side"
     folder: "src/info/byOurSide"
-    create: true
     fields:
       - {
           label: "Template Key",
@@ -170,7 +162,6 @@ collections:
   - name: "form"
     label: "Form"
     folder: "src/info/form"
-    create: true
     fields:
       - {
           label: "Template Key",
@@ -194,10 +185,23 @@ collections:
       - { label: "Success - Sub Title", name: "successSubTitle", widget: "string" }
       - { label: "Success - Button Text", name: "successButtonText", widget: "string" }
   
+  - name: "covid"
+    label: "Covid"
+    folder: "src/info/covid"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "covid",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Sub Title", name: "subTitle", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", required: false}
+
   - name: "finalPhrase"
     label: "Final Phrase"
     folder: "src/info/finalPhrase"
-    create: true
     fields:
       - {
           label: "Template Key",

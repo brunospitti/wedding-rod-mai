@@ -2,18 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
+import format from 'date-fns/format';
+import ptBR from 'date-fns/locale/pt-BR';
 
 import { breakpoints } from '../assets/globalStyles';
 import { useTheme } from './hooks/Theme/useTheme';
 
-export const Invite = () => {
+export const Invite = ({ date }) => {
   const { theme } = useTheme();
 
   const { maiaraRodrigo } = useStaticQuery(graphql`
     query MaiaraRodrigo {
-      maiaraRodrigo: file(relativePath: { eq: "maiara-e-rodrigo.jpg" }) {
+      maiaraRodrigo: file(relativePath: { eq: "nomes-maiara-rodrigo.png" }) {
         childImageSharp {
-          fixed(height: 100, quality: 90) {
+          fixed(width: 500, quality: 90) {
             originalName
             ...GatsbyImageSharpFixed
           }
@@ -36,7 +38,11 @@ export const Invite = () => {
           <div className="three">convidam para o seu casamento</div>
         </div>
         <div className="right">
-          <div className="one">01 de Maio de 2021</div>
+          <div className="one">
+            {format(new Date(date), 'dd MMMM yyyy', { locale: ptBR })
+              .split(' ')
+              .join(' de ')}
+          </div>
           <div className="two">Sábado, às 19h15</div>
           <div className="three">Mansão Zurique</div>
           <div className="four">

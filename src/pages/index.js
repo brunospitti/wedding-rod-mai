@@ -183,6 +183,18 @@ export const pageQuery = graphql`
       }
     }
 
+    covid: allMarkdownRemark(filter: { fields: { slug: { regex: "/covid/" } } }) {
+      edges {
+        node {
+          frontmatter {
+            title
+            subTitle
+            description
+          }
+        }
+      }
+    }
+
     finalPhrase: allMarkdownRemark(
       filter: { fields: { slug: { regex: "/finalPhrase/" } } }
     ) {

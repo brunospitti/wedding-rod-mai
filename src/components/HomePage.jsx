@@ -40,6 +40,7 @@ export const HomePage = ({ data }) => {
       welcome = {
         image: { childImageSharp: { fixed: '' } },
       },
+      covid = {},
       finalPhrase = {},
     },
     setNormalizedData,
@@ -129,7 +130,7 @@ export const HomePage = ({ data }) => {
             <IrelandPhoto photo={welcome.image} ireland={ireland} />
           </SectionRaw>
           <SectionRaw>
-            <Invite invite={invite} />
+            <Invite invite={invite} date={banner.date} />
           </SectionRaw>
           <Section>
             <TextSection
@@ -148,6 +149,13 @@ export const HomePage = ({ data }) => {
           <SectionRaw>
             <Form form={form} />
           </SectionRaw>
+          <Section>
+            <TextSection
+              title={covid.title}
+              subTitle={covid.subTitle}
+              description={covid.description}
+            />
+          </Section>
           <Section>
             <TextSection
               title={finalPhrase.title}
