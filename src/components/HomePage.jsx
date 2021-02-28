@@ -146,9 +146,6 @@ export const HomePage = ({ data }) => {
           <Section>
             <ByOurSide byOurSide={byOurSide} friends={friends} parents={parents} />
           </Section>
-          <SectionRaw>
-            <Form form={form} />
-          </SectionRaw>
           <Section>
             <TextSection
               title={covid.title}
@@ -156,6 +153,9 @@ export const HomePage = ({ data }) => {
               description={covid.description}
             />
           </Section>
+          <SectionRaw>
+            <Form form={form} />
+          </SectionRaw>
           <Section>
             <TextSection
               title={finalPhrase.title}
