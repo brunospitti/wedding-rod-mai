@@ -14,4 +14,7 @@ description: >-
 
 
   Essa festa não é apenas para simbolizar nosso amor e recebermos a benção do padre, também vale como uma despedida! Afinal, exatos 1 mês depois, estaremos embarcando para Dublin! 🧳✈️
+
+
+  PS. Pedimos descrição pois ainda não avisamos as empresa onde trabalhamos! 😉
 ---
