@@ -1,14 +1,30 @@
 ---
 templateKey: covid
 title: Recomendações - Coronavírus
-subTitle: "Sabemos que o momento que estamos passando não é fácil e entendemos
-  se não estiver confortável em ir, sem problema algum! Mas caso você vá,
-  pedimos por favor que siga as seguintes instruções:"
+subTitle: "Estamos passando por um momento delicado e inimaginável, que pede
+  mais atenção aos cuidados de higiene e principalmente que cuidemos de todos e
+  de nós mesmos. Em nosso casamento não será diferente, por isso será tomado
+  todas as precauções e medidas preventivas para a realização da nossa festa. "
 description: >-
-  1) Nós convidamos nossas famílias que possuem pessoas com mais idade e,
-  infelizmente, nem todos estarão vacinados até a data do casamento. Se
-  possível, nas duas semanas antes do casamento, evitem sair para que a festa
-  seja mais segura para todos;
+  - Teremos convidados com mais idade e, infelizmente, nem todos estarão
+  vacinados até a data do casamento. Se possível, nas duas semanas que antecedem
+  o casamento, evite sair de casa para que a festa seja mais segura para todos;
 
-  2) Não esqueça de levar máscaras e álcool em gel;
+
+  Para o dia do casamento:
+
+  - Não esqueça de levar máscaras e álcool em gel;
+
+  - Pedimos por gentileza a utilização de máscaras durante toda a cerimônia;
+
+  - Caso apresente o mínimo de sintomas de Covid-19 dias antes ou no dia da festa, por favor, fique em casa!
+
+
+  Nós, noivos, vamos realizar o teste de Covid dias antes do nosso Grande Dia a fim de garantir segurança para todos os nossos convidados.
+
+
+  Cuide-se para que esse dia seja especial para todos nós!
+
+
+  Desde já agradecemos e contamos com a colaboração de todos!
 ---
