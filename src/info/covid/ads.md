@@ -3,12 +3,13 @@ templateKey: covid
 title: Recomendações - Coronavírus
 subTitle: "Estamos passando por um momento delicado e inimaginável, que pede
   mais atenção aos cuidados de higiene e principalmente que cuidemos de todos e
-  de nós mesmos. Em nosso casamento não será diferente, por isso será tomado
+  de nós mesmos. Em nosso casamento não será diferente, por isso serão tomadas
   todas as precauções e medidas preventivas para a realização da nossa festa. "
 description: >-
-  - Teremos convidados com mais idade e, infelizmente, nem todos estarão
-  vacinados até a data do casamento. Se possível, nas duas semanas que antecedem
-  o casamento, evite sair de casa para que a festa seja mais segura para todos;
+  Pedimos por favor que siga as seguintes instruções:
+
+
+  - Teremos convidados com mais idade e, infelizmente, nem todos estarão vacinados até a data do casamento. Se possível, nas duas semanas que antecedem o casamento, evite sair de casa para que a festa seja mais segura para todos;
 
 
   Para o dia do casamento:
