@@ -1,7 +1,7 @@
 ---
 templateKey: form
 title: Confirmação de presença
-subTitle: "{name}, Queremos muito você lá!"
+subTitle: "{name}, queremos muito você lá!"
 description: >-
   Devido à pandemia, a resposta de confirmação dos convidados é de extrema
   importância.
