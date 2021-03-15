@@ -14,6 +14,7 @@ import { Invite } from './Invite';
 import { Presents } from './Presents';
 import { ByOurSide } from './ByOurSide';
 import { Form } from './Form';
+import { HeartDivider } from './HeartDivider';
 
 import { Section, SectionRaw } from './helpers/Section';
 
@@ -147,6 +148,7 @@ export const HomePage = ({ data }) => {
             <ByOurSide byOurSide={byOurSide} friends={friends} parents={parents} />
           </Section>
           <Section>
+            <HeartDivider />
             <TextSection
               title={covid.title}
               subTitle={covid.subTitle}
@@ -154,6 +156,7 @@ export const HomePage = ({ data }) => {
             />
           </Section>
           <SectionRaw>
+            <HeartDivider />
             <Form form={form} />
           </SectionRaw>
           <Section>

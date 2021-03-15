@@ -1,38 +1,19 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import BackgroundImage from 'gatsby-background-image';
 import { useTheme } from './hooks/Theme/useTheme';
 import { TextFromString } from './helpers/Content';
 import { Section } from './helpers/Section';
 import { breakpoints } from '../assets/globalStyles';
+import { HeartDivider } from './HeartDivider';
 
 export const IrelandPhoto = ({ photo, ireland }) => {
   const { theme } = useTheme();
 
-  const { heartDivider } = useStaticQuery(graphql`
-    query HeartDivider {
-      heartDivider: file(relativePath: { eq: "heart-divider.png" }) {
-        childImageSharp {
-          fixed(height: 30, quality: 90) {
-            originalName
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `);
-
   return (
     <StyledIrelandPhotoWrapper theme={theme}>
-      <div className="heart-divider-holder">
-        <StyledBackgroundImage
-          className="heart-divider"
-          Tag="div"
-          fixed={heartDivider.childImageSharp.fixed}
-          backgroundColor="transparent"
-        />
-      </div>
+      <HeartDivider />
+
       <div className="ireland-section-holder">
         <Section className="ireland-section">
           {ireland.description && (
@@ -56,10 +37,6 @@ export const IrelandPhoto = ({ photo, ireland }) => {
 // styled components
 
 const StyledIrelandPhotoWrapper = styled.div`
-  .heart-divider-holder {
-    height: 30px;
-    margin-bottom: 100px;
-  }
   .ireland-section-holder {
     background: ${({ theme }) => theme.irelandSectionBg};
     padding: 30px 0;
@@ -81,6 +58,7 @@ const StyledIrelandPhotoWrapper = styled.div`
           text-align: center;
         }
       }
+
       .image-holder {
         width: 100%;
         height: 500px;
