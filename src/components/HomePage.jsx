@@ -4,7 +4,6 @@ import Loadable from 'react-loadable';
 import { useStaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 import styled from 'styled-components';
-import { useQueryParam, StringParam } from 'use-query-params';
 
 import { Layout } from '../components/helpers/Layout';
 import { Loading } from '../components/Loading';
@@ -17,13 +16,11 @@ import { Presents } from './Presents';
 import { ByOurSide } from './ByOurSide';
 import { Form } from './Form';
 import { HeartDivider } from './HeartDivider';
+import { Video } from './Video';
 
 import { Section, SectionRaw } from './helpers/Section';
 
 export const HomePage = ({ data }) => {
-  const [rod] = useQueryParam('rod', StringParam);
-  const showVideo = rod === 'gay';
-
   const [fontLoaded, setFontLoaded] = useState(false);
   const [dataLoaded, setDataLoaded] = useState(false);
   const [
@@ -131,20 +128,7 @@ export const HomePage = ({ data }) => {
               subTitle={welcome.subTitle}
               description={welcome.description}
             />
-            {showVideo && (
-              <div className="video-holder">
-                <iframe
-                  width="800"
-                  height="450"
-                  src="https://www.youtube.com/embed/I9vJFxztCJE"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  style={{ 'max-width': '100%' }}
-                ></iframe>
-              </div>
-            )}
+            <Video />
           </Section>
           <SectionRaw>
             <IrelandPhoto photo={welcome.image} ireland={ireland} />
@@ -222,10 +206,5 @@ const StyledHomePage = styled.div`
   .rings-holder {
     display: flex;
     justify-content: center;
-  }
-
-  .video-holder {
-    text-align: center;
-    margin-top: 50px;
   }
 `;
