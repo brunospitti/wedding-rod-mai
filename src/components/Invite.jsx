@@ -24,6 +24,8 @@ export const Invite = ({ date }) => {
     }
   `);
 
+  // *Estacionamento no local: R$30,00
+
   return (
     <StyledInviteWrapper theme={theme}>
       <div className="invite-content">
@@ -43,11 +45,12 @@ export const Invite = ({ date }) => {
               .split(' ')
               .join(' de ')}
           </div>
-          <div className="two">Sábado, às 19h15</div>
-          <div className="three">Mansão Zurique</div>
+          <div className="two">Sábado, às 19h45</div>
+          <div className="three">Mansão Génova</div>
           <div className="four">
-            Rua do Acre, 255 - <span>Mooca - Sao Paulo - SP</span>
+            Rua da Mooca, 1415 - <span>Mooca - Sao Paulo - SP</span>
           </div>
+          <div className="five">*Estacionamento no local: R$30,00</div>
         </div>
       </div>
     </StyledInviteWrapper>
@@ -175,6 +178,10 @@ const StyledInviteWrapper = styled.div`
       @media ${breakpoints.tabletSmall} {
         display: inline-block;
       }
+    }
+    .five{
+      font-size: 0.75em;
+      margin-top: 1em;
     }
     &:before {
       content: '';
