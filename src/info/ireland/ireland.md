@@ -13,7 +13,7 @@ description: >-
   Estamos juntos há 5 anos e sempre tivemos esse sonho de viver novas experiências, de conhecer novas culturas, lugares, pessoas e de quem sabe conhecer o mundo. Sentimos que esse momento chegou e estamos prontos para viver esse novo desafio.
 
 
-  Essa festa não é apenas para simbolizar nosso amor e recebermos a benção do padre, também vale como uma despedida! Afinal, exatos quinze dias depois, estaremos embarcando para Dublin! 🧳✈️
+  Essa festa não é apenas para simbolizar nosso amor e recebermos a benção do padre, também vale como uma despedida! Afinal, TRÊS DIAS depois, estaremos embarcando para Dublin! 🧳✈️
 
 
   PS. Pedimos descrição pois ainda não avisamos as empresas onde trabalhamos! 😉
